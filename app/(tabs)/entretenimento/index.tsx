@@ -3,7 +3,13 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { Image, ScrollView, Text, View } from 'react-native'
 import DropdownMenu from '@/components/dropdown/dropdown'
 import { styles } from './estilizacao.styles'
-import imgPao from '../../../assets/images/icon.png'
+
+// imagens dos livros
+import imgAlice from '../../../assets/images/entrenimento/capa-alice-no-pais-das-maravilhas.webp'
+import imgCupcake from '../../../assets/images/entrenimento/capa-o-cupcake-da-discordia.jpg'
+import imgJardim from '../../../assets/images/entrenimento/capa-o-jardim-secreto.jpg'
+import imgPequenoHeroi from '../../../assets/images/entrenimento/capa-o-pequeno-heroi.jpg'
+import imgPequenoPrincipe from '../../../assets/images/entrenimento/capa-o-pequeno-principe.jpg'
 
 export default function Entretenimento() {
   const [categoriaSelecionada, setCategoriaSelecionada] = useState('')
@@ -11,31 +17,47 @@ export default function Entretenimento() {
   const entretenimentos = [
     {
       id: 1,
-      categoria: 'Filmes gratuitos',
-      titulo: 'Top Gun: Maverick',
-      imagem: imgPao,
+      categoria: 'Fantasia',
+      titulo: 'Alice no País das Maravilhas - Lewis Carroll',
+      imagem: imgAlice,
       descricao:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, maxime. Nesciunt eligendi error placeat sapiente maiores aliquid reprehenderit, itaque minima adipisci ipsum dicta magni nostrum facilis velit! In, sit earum!',
+        'Uma menina curiosa cai numa toca de coelho e descobre um mundo mágico cheio de personagens excêntricos e aventuras surreais.'
     },
     {
       id: 2,
-      categoria: 'Filmes gratuitos',
-      titulo: 'Como eu era antes de você',
-      imagem: imgPao,
+      categoria: 'Humor',
+      titulo: 'O Cupcake da Discórdia - Stefania Gil',
+      imagem: imgCupcake,
       descricao:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, maxime. Nesciunt eligendi error placeat sapiente maiores aliquid reprehenderit, itaque minima adipisci ipsum dicta magni nostrum facilis velit! In, sit earum!',
+        'Romance leve e divertido sobre rivalidade, segredos e romance que nasce em torno de uma confeitaria especial.'
     },
     {
       id: 3,
-      categoria: 'Livros gratuitos',
-      titulo: 'A culpa é das estrelas',
-      imagem: imgPao,
+      categoria: 'Fantasia',
+      titulo: 'O Jardim Secreto - Frances Hodgson Burnett',
+      imagem: imgJardim,
       descricao:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, maxime. Nesciunt eligendi error placeat sapiente maiores aliquid reprehenderit, itaque minima adipisci ipsum dicta magni nostrum facilis velit! In, sit earum!',
+        'Uma menina solitária descobre um jardim abandonado e, ao restaurá-lo, transforma também sua própria vida e a dos que estão à sua volta.'
+    },
+    {
+      id: 4,
+      categoria: 'Reflexão',
+      titulo: 'O Pequeno Herói - Judith Steen',
+      imagem: imgPequenoHeroi,
+      descricao:
+        'História inspiradora de coragem e superação de uma criança que, mesmo diante das dificuldades, encontra forças para ser um verdadeiro herói.'
+    },
+    {
+      id: 5,
+      categoria: 'Reflexão',
+      titulo: 'O Pequeno Príncipe - Antoine de Saint-Exupéry',
+      imagem: imgPequenoPrincipe,
+      descricao:
+        'Um piloto perdido no deserto encontra um menino vindo de outro planeta, e através de conversas simples, descobre reflexões profundas sobre amor, amizade e a essência da vida.'
     },
   ]
 
-  const entretenimentosFiltrados = categoriaSelecionada && categoriaSelecionada !== "Todas as categorias"
+  const entretenimentosFiltrados = categoriaSelecionada && categoriaSelecionada !== "Todos os livros"
     ? entretenimentos.filter(entretenimento => entretenimento.categoria === categoriaSelecionada)
     : entretenimentos
 
@@ -58,12 +80,12 @@ export default function Entretenimento() {
             <Text style={styles.titulo}>{entretenimento.titulo}</Text>
             <Image
               source={entretenimento.imagem}
-              style={{ width:'100%', height: 200, marginBottom: 10 }}
+              style={{ width:'100%', height: 400, marginBottom: 10 }}
             />
             <Text style={styles.descricao}>{entretenimento.descricao}</Text>
           </View>
         )) 
-        : <Text style={styles.textoSemEntretenimento}>Nenhum filme/livro disponível</Text>
+        : <Text style={styles.textoSemEntretenimento}>Nenhum livro disponível</Text>
       }
       </ScrollView>
     </LinearGradient>

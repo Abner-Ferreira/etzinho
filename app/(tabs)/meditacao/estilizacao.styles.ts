@@ -8,11 +8,9 @@ export const styles = StyleSheet.create({
   },
   container: {
     padding: '5%',
-    overflowY: 'scroll',
   },
   containerIntroducao: {
-    marginBottom: 25,
-    height: '30%',
+    marginBottom: 30,
     display: 'flex',
     justifyContent: 'space-evenly',
     alignItems: 'baseline',
@@ -35,11 +33,12 @@ export const styles = StyleSheet.create({
     textAlign: 'justify',
     fontFamily: 'Inter_400Regular',
     color: '#6E7C91',
+    marginTop: 20
   },
   containerVideos: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
+    // display: 'flex',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // flexDirection: 'column',
   },
 })

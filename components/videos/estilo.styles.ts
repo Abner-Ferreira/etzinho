@@ -14,7 +14,6 @@ export const styles = StyleSheet.create({
     fontFamily: 'Inter_400Regular',
     lineHeight: 20,
     textAlign: 'justify',
-    marginTop: -20,
     color: '#6E7C91',
   },
 })

@@ -8,12 +8,13 @@ const categorias = [
   'Café da Manhã',
   'Almoço',
   'Jantar',
-  'Lanchinhos para beliscar',
+  'Lanches rápidos',
 ]
 const categoriasEntretenimento = [
-  'Todas as categorias',
-  'Filmes gratuitos',
-  'Livros gratuitos',
+  'Todos os livros',
+  'Fantasia',
+  'Reflexão',
+  'Humor',
 ]
 
 type Props = {
@@ -50,7 +51,7 @@ export default function DropdownMenu({
           />
         ) : (
           <MaterialCommunityIcons
-            name='movie-open-outline'
+            name='book'
             size={18}
             color='#1ab394'
             style={{ marginRight: 6 }}
@@ -59,7 +60,7 @@ export default function DropdownMenu({
         <Text style={styles.menuText}>
           {renderizarSessao === 'Receitas'
             ? selected || 'Todas as receitas'
-            : selected || 'Todas as categorias'}
+            : selected || 'Todos os livros'}
         </Text>
         <AntDesign
           name={aberto ? 'up' : 'down'}
