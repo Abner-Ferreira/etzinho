@@ -10,7 +10,8 @@ export const styles = StyleSheet.create({
     padding: '5%',
   },
   texto: {
-    color: '#6E7C91',
-    fontSize: 28
+    color: '#1ab394',
+    fontSize: 24,
+    margin: 10
   }
 })

@@ -1,6 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient'
 import { ScrollView, Text } from 'react-native'
 import { styles } from './estilizacao.styles'
+import { ConhecimentoCards } from '@/components/cardConhecimento'
 
 export default function Conhecimento() {
 
@@ -12,7 +13,8 @@ export default function Conhecimento() {
         style={styles.container}
         nestedScrollEnabled
       >
-        <Text style={styles.texto}>Página em andamento</Text>
+        <Text style={styles.texto}>Aumente o seu conhecimento</Text>
+        <ConhecimentoCards />
       </ScrollView>
     </LinearGradient>
   )
