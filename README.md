@@ -18,7 +18,7 @@ Oferecer acolhimento, autonomia e leveza para quem precisa de apoio emocional, c
 
 Assista ao vídeo de apresentação do projeto:
 
-👉 https://youtu.be/pKsLLweff2A
+👉 https://youtu.be/0TL14KkvSDU
 
 ## 🛠️ Tecnologias utilizadas
 
