@@ -1,50 +1,34 @@
-# Welcome to your Expo app 👋
+# 🌱 Etzinho – Seu espaço de bem-estar diário
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**Etzinho** é um aplicativo mobile criado para apoiar pessoas que enfrentam depressão e outros desafios emocionais. Ele funciona como uma enciclopédia afetiva, reunindo em um só lugar recursos práticos, reconfortantes e educativos para o dia a dia.
 
-## Get started
+## 🎯 Propósito
 
-1. Install dependencies
+Oferecer acolhimento, autonomia e leveza para quem precisa de apoio emocional, com ferramentas simples e acessíveis que ajudam a construir uma rotina mais saudável e consciente.
 
-   ```bash
-   npm install
-   ```
+## 📱 Funcionalidades
 
-2. Start the app
+- 📚 **Livros reconfortantes** e gratuitos para momentos difíceis  
+- 🥗 **Receitas fáceis e saudáveis** para cuidar do corpo com carinho  
+- 🧘‍♀️ **Aulas de yoga** para relaxar e se reconectar  
+- ✅ **Checklist de atividades diárias** (em construção) com ações simples como "respire fundo por 2 minutos"  
+- 🧠 **Aba de conhecimento** (em construção) com informações sobre transtornos e histórias reais de superação
 
-   ```bash
-   npx expo start
-   ```
+## 🎥 Vídeo Pitch
 
-In the output, you'll find options to open the app in a
+Assista ao vídeo de apresentação do projeto:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+👉 https://youtu.be/pKsLLweff2A
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🛠️ Tecnologias utilizadas
 
-## Get a fresh project
+- React Native 
+- Expo 
+- Figma
 
-When you're ready, run:
+## 👥 Autores
 
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- **Abner Rodrigues Ferreira** – RM 559568  
+- **Thaís Vanessa de Oliveira** – RM 560160  
+- **Paulo Artur Rodrigues da Silva** – RM 560244  
+- **Luma Levenhagen Alarcon da Fonseca** – RM 559972
