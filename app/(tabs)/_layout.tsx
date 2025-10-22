@@ -2,7 +2,7 @@ import { Tabs } from 'expo-router'
 import React from 'react'
 
 // import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol'
+import { IconSymbol } from '@/src/components/ui/icon-symbol'
 
 export default function TabLayout() {
   return (
@@ -24,7 +24,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name='meditacao/index'
         options={{
-          title: 'Meditação',
+          title: 'Relax',
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name='figure.yoga' color={color} />
           ),
@@ -35,16 +35,16 @@ export default function TabLayout() {
         options={{
           title: 'Receitas',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name='book' color={color} />
+            <IconSymbol size={28} name='fork.knife' color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name='entretenimento/index'
         options={{
-          title: 'Entretenimento',
+          title: 'Lazer',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name='movieclapper' color={color} />
+            <IconSymbol size={28} name='book.fill' color={color} />
           ),
         }}
       />
@@ -52,8 +52,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="conhecimento/index"
         options={{
-          title: 'Conhecimento',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="graduationcap" color={color} />,
+          title: 'Saúde',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="brain.head.profile" color={color} />,
         }}
       />
     </Tabs>

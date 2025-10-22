@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "titulo": "Respiração profunda",
+    "subtitulo": "Respire fundo por 2 minutos."
+  },
+  {
+    "id": 2,
+    "titulo": "Diário de gratidão",
+    "subtitulo": "Aprecie 3 coisas boas hoje."
+  },
+  {
+    "id": 3,
+    "titulo": "Alongamento leve",
+    "subtitulo": "Movimente seu corpo devagar."
+  },
+  {
+    "id": 4,
+    "titulo": "Caminhada curta",
+    "subtitulo": "Caminhe e sinta o ar fresco."
+  },
+  {
+    "id": 5,
+    "titulo": "Pausa consciente",
+    "subtitulo": "Relaxe e respire por 2 minutos."
+  },
+  {
+    "id": 6,
+    "titulo": "Meditação guiada",
+    "subtitulo": "Ouça e acalme sua mente agora."
+  },
+  {
+    "id": 7,
+    "titulo": "Contato social",
+    "subtitulo": "Envie carinho a alguém querido."
+  },
+  {
+    "id": 8,
+    "titulo": "Hidratação",
+    "subtitulo": "Beba água e cuide de você."
+  },
+  {
+    "id": 9,
+    "titulo": "Atividade criativa",
+    "subtitulo": "Crie algo e se sinta bem."
+  },
+  {
+    "id": 10,
+    "titulo": "Ouvir música relaxante",
+    "subtitulo": "Escute música e se acalme."
+  },
+  {
+    "id": 11,
+    "titulo": "Autocompaixão",
+    "subtitulo": "Diga algo bom para você."
+  },
+  {
+    "id": 12,
+    "titulo": "Respiração com contagem",
+    "subtitulo": "Inspire, segure e expire devagar."
+  },
+  {
+    "id": 13,
+    "titulo": "Exercício leve",
+    "subtitulo": "Alongue-se e sinta leveza."
+  },
+  {
+    "id": 14,
+    "titulo": "Observar a natureza",
+    "subtitulo": "Veja cores e ouça sons calmos."
+  },
+  {
+    "id": 15,
+    "titulo": "Técnica de grounding",
+    "subtitulo": "Liste coisas que te trazem paz."
+  },
+  {
+    "id": 16,
+    "titulo": "Visualização positiva",
+    "subtitulo": "Imagine coisas boas agora."
+  },
+  {
+    "id": 17,
+    "titulo": "Banho relaxante",
+    "subtitulo": "Sinta a água e relaxe bem."
+  },
+  {
+    "id": 18,
+    "titulo": "Alongamento matinal",
+    "subtitulo": "Estique-se para acordar leve."
+  },
+  {
+    "id": 19,
+    "titulo": "Escrita terapêutica",
+    "subtitulo": "Anote pensamentos e alivie."
+  },
+  {
+    "id": 20,
+    "titulo": "Respirar ao ar livre",
+    "subtitulo": "Sinta o vento e respire fundo."
+  },
+  {
+    "id": 21,
+    "titulo": "Risos curtos",
+    "subtitulo": "Assista algo e dê boas risadas."
+  },
+  {
+    "id": 22,
+    "titulo": "Yoga leve",
+    "subtitulo": "Alongue e sinta seu corpo vivo."
+  },
+  {
+    "id": 23,
+    "titulo": "Música alegre",
+    "subtitulo": "Dance e se divirta agora mesmo."
+  },
+  {
+    "id": 24,
+    "titulo": "Chá calmante",
+    "subtitulo": "Prepare e beba calmamente."
+  },
+  {
+    "id": 25,
+    "titulo": "Técnica Pomodoro",
+    "subtitulo": "Concentre-se e faça pausas curtas."
+  },
+  {
+    "id": 26,
+    "titulo": "Autoafirmação",
+    "subtitulo": "Diga algo positivo sobre si."
+  },
+  {
+    "id": 27,
+    "titulo": "Respirar pelo nariz",
+    "subtitulo": "Inspire fundo e expire devagar."
+  },
+  {
+    "id": 28,
+    "titulo": "Visualização de luz",
+    "subtitulo": "Imagine luz e sinta paz agora."
+  },
+  {
+    "id": 29,
+    "titulo": "Caminhada consciente",
+    "subtitulo": "Sinta cada passo com atenção."
+  },
+  {
+    "id": 30,
+    "titulo": "Desenho livre",
+    "subtitulo": "Desenhe sem se preocupar nada."
+  },
+  {
+    "id": 31,
+    "titulo": "Respiração alternada",
+    "subtitulo": "Use narinas e respire devagar."
+  },
+  {
+    "id": 32,
+    "titulo": "Alongamento noturno",
+    "subtitulo": "Relaxe corpo antes de dormir."
+  },
+  {
+    "id": 33,
+    "titulo": "Café da manhã mindful",
+    "subtitulo": "Coma devagar e saboreie tudo."
+  },
+  {
+    "id": 34,
+    "titulo": "Escrita de metas",
+    "subtitulo": "Anote seus objetivos claros."
+  },
+  {
+    "id": 35,
+    "titulo": "Abraço consciente",
+    "subtitulo": "Abrace alguém e sinta calor."
+  },
+  {
+    "id": 36,
+    "titulo": "Paixão artística",
+    "subtitulo": "Crie algo e liberte emoções."
+  },
+  {
+    "id": 37,
+    "titulo": "Mente presente",
+    "subtitulo": "Observe pensamentos sem julgar."
+  },
+  {
+    "id": 38,
+    "titulo": "Aromaterapia",
+    "subtitulo": "Sinta aromas e relaxe mente."
+  },
+  {
+    "id": 39,
+    "titulo": "Respiração profunda 2",
+    "subtitulo": "Inspire e expire com atenção."
+  },
+  {
+    "id": 40,
+    "titulo": "Pausa digital",
+    "subtitulo": "Desconecte e descanse a mente."
+  }
+]

@@ -1,26 +1,25 @@
 import { useState } from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Image, ScrollView, Text, View } from 'react-native'
-import DropdownMenu from '@/components/dropdown/dropdown'
+import DropdownMenu from '@/src/components/dropdown/dropdown'
 import { styles } from './estilizacao.styles'
 
-
 // imagens das receitas café da manhã
-import imgPanqueca from '../../../assets/images/receitas/panqueca-de-banana-com-aveia.webp'
-import imgPaoComOvo from '../../../assets/images/receitas/pao-com-ovo-e-tomate.jpg'
-import imgVitamina from '../../../assets/images/receitas/vitamina-de-frutas.jpg'
+import imgPanqueca from '../../../src/assets/images/receitas/panqueca-de-banana-com-aveia.webp'
+import imgPaoComOvo from '../../../src/assets/images/receitas/pao-com-ovo-e-tomate.jpg'
+import imgVitamina from '../../../src/assets/images/receitas/vitamina-de-frutas.jpg'
 // imagens das receitas almoço
-import imgOmelete from '../../../assets/images/receitas/omelete-de-legumes.jpg'
-import imgBatataDoce from '../../../assets/images/receitas/batata-doce-e-frango.jpg'
-import imgMacarrao from '../../../assets/images/receitas/macarrao-alho-e-oleo-e-couve.jpg'
+import imgOmelete from '../../../src/assets/images/receitas/omelete-de-legumes.jpg'
+import imgBatataDoce from '../../../src/assets/images/receitas/batata-doce-e-frango.jpg'
+import imgMacarrao from '../../../src/assets/images/receitas/macarrao-alho-e-oleo-e-couve.jpg'
 // imagens das receitas janta
-import imgSopa from '../../../assets/images/receitas/sopa-de-legumes.jpg'
-import imgTapioca from '../../../assets/images/receitas/tapioca-de-queijo-com-tomate.jpg'
-import imgSanduiche from '../../../assets/images/receitas/sanduiche-natural.jpg'
+import imgSopa from '../../../src/assets/images/receitas/sopa-de-legumes.jpg'
+import imgTapioca from '../../../src/assets/images/receitas/tapioca-de-queijo-com-tomate.jpg'
+import imgSanduiche from '../../../src/assets/images/receitas/sanduiche-natural.jpg'
 // imagens das receitas lanchinhos rápidos
-import imgPipoca from '../../../assets/images/receitas/pipoca.jpeg'
-import imgFrutaComIogurte from '../../../assets/images/receitas/fruta-com-iogurte.jpg'
-import imgGelatina from '../../../assets/images/receitas/gelatina-cremosa.jpeg'
+import imgPipoca from '../../../src/assets/images/receitas/pipoca.jpeg'
+import imgFrutaComIogurte from '../../../src/assets/images/receitas/fruta-com-iogurte.jpg'
+import imgGelatina from '../../../src/assets/images/receitas/gelatina-cremosa.jpeg'
 
 export default function Receitas() {
   const [categoriaSelecionada, setCategoriaSelecionada] = useState('')

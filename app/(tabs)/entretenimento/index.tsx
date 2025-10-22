@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Image, ScrollView, Text, View } from 'react-native'
-import DropdownMenu from '@/components/dropdown/dropdown'
+import DropdownMenu from '@/src/components/dropdown/dropdown'
 import { styles } from './estilizacao.styles'
 
 // imagens dos livros
-import imgAlice from '../../../assets/images/entrenimento/capa-alice-no-pais-das-maravilhas.webp'
-import imgCupcake from '../../../assets/images/entrenimento/capa-o-cupcake-da-discordia.jpg'
-import imgJardim from '../../../assets/images/entrenimento/capa-o-jardim-secreto.jpg'
-import imgPequenoHeroi from '../../../assets/images/entrenimento/capa-o-pequeno-heroi.jpg'
-import imgPequenoPrincipe from '../../../assets/images/entrenimento/capa-o-pequeno-principe.jpg'
+import imgAlice from '../../../src/assets/images/entrenimento/capa-alice-no-pais-das-maravilhas.webp'
+import imgCupcake from '../../../src/assets/images/entrenimento/capa-o-cupcake-da-discordia.jpg'
+import imgJardim from '../../../src/assets/images/entrenimento/capa-o-jardim-secreto.jpg'
+import imgPequenoHeroi from '../../../src/assets/images/entrenimento/capa-o-pequeno-heroi.jpg'
+import imgPequenoPrincipe from '../../../src/assets/images/entrenimento/capa-o-pequeno-principe.jpg'
 
 export default function Entretenimento() {
   const [categoriaSelecionada, setCategoriaSelecionada] = useState('')

@@ -4,40 +4,23 @@
     "slug": "etzinho",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/etzinho.png",
+    "icon": "./src/assets/images/etzinho.png",
     "scheme": "etzinho",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true
-    },
+    "ios": { "supportsTablet": true },
     "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#d9f2ef"
-      },
+      "adaptiveIcon": { "backgroundColor": "#d9f2ef" },
+      "backgroundColor": "#d9f2ef",
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
+      
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/etzinho.png"
+      "favicon": "./src/assets/images/etzinho.png"
     },
-    "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/etzinho.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#d9f2ef"
-        }
-      ],
-      "expo-font"
-    ],
-    "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
-    }
+    "plugins": ["expo-router", "expo-font"],
+    "experiments": { "typedRoutes": true, "reactCompiler": true }
   }
 }

@@ -1,8 +1,7 @@
+import Videos from '@/src/components/videos'
 import { LinearGradient } from 'expo-linear-gradient'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
-import YoutubePlayer from 'react-native-youtube-iframe'
+import { ScrollView, Text, View } from 'react-native'
 import { styles } from './estilizacao.styles'
-import Videos from '@/components/videos'
 
 export default function Meditacao() {
   return (

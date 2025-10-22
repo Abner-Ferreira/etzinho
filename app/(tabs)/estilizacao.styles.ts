@@ -41,39 +41,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 30,
   },
-  containerCard: {
-    marginVertical: 20,
-    
-  },
-  textoSessao: {
-    fontSize: 24,
-    lineHeight: 34,
-    marginBottom: 20,
-    fontFamily: 'Inter_700Bold',
-    color: '#1ab394',
-  },
-  conteudoCardContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    height: 100,
-    borderRadius: 16,
-    backgroundColor: '#c1eee9ff'
-  },
-  conteudoCard: {},
-  tituloCard: {
-    fontSize: 18,
-    lineHeight: 30,
-    marginBottom: 5,
-    fontFamily: 'Inter_700Bold',
-    color: '#1ab394',
-  },
-  objetivoCard: {
-    fontSize: 16,
-    lineHeight: 26,
-    fontFamily: 'Inter_500Regular',
-    color: '#6E7C91',
-  },
+ 
   textoMotivacao:{
     marginVertical: 30,
     textAlign: 'center',
