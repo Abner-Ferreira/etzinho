@@ -1,4 +1,4 @@
-import { getSugestaoHora, Sugestao } from '@/app/api/sugestaoDia'
+import { getSugestaoHora, Sugestao } from '@/src/api/sugestaoDia'
 import { useState, useEffect } from 'react'
 
 export function useSugestaoHora() {

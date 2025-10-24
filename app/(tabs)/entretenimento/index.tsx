@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import { LinearGradient } from 'expo-linear-gradient'
-import { Image, ScrollView, Text, View } from 'react-native'
 import DropdownMenu from '@/src/components/dropdown/dropdown'
-import { styles } from './estilizacao.styles'
+import { LinearGradient } from 'expo-linear-gradient'
+import { useState } from 'react'
+import { Image, ScrollView, Text, View } from 'react-native'
+import { styles } from '../../../src/styles/entretenimento.styles'
 
 // imagens dos livros
 import imgAlice from '../../../src/assets/images/entrenimento/capa-alice-no-pais-das-maravilhas.webp'

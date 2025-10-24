@@ -1,49 +1,35 @@
-import Splash from '@/src/components/splash';
-import { Inter_400Regular, Inter_700Bold, useFonts } from '@expo-google-fonts/inter';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useCallback, useEffect, useState } from 'react';
-import { StatusBar, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { AuthProvider, AuthContext } from '@/src/contexts/AuthContext'
+import { Stack, useRouter } from 'expo-router'
+import React, { useContext, useEffect } from 'react'
+import Splash from '@/src/components/splash'
+import { StatusBar } from 'react-native'
 
-export const unstable_settings = { anchor: '(tabs)' };
+function RootNavigator() {
+  const { user, loading } = useContext(AuthContext)
+  const router = useRouter()
 
-export default function RootLayout() {
-  const [fontsLoaded] = useFonts({ Inter_400Regular, Inter_700Bold });
-  const [ready, setReady] = useState(false);
-  const splashDuration = 3000;
-
-  // Mantém a splash e gerencia tempo e carregamento
   useEffect(() => {
-    async function prepare() {
-      await SplashScreen.preventAutoHideAsync();
-      if (fontsLoaded) {
-        setTimeout(() => setReady(true), splashDuration);
+    if (!loading) {
+      if (user) {
+        router.replace('/(tabs)')
+      } else {
+        router.replace('/(auth)/login')
       }
     }
-    prepare();
-  }, [fontsLoaded]);
+  }, [user, loading])
 
-  const onLayoutRootView = useCallback(async () => {
-    if (ready && fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [ready, fontsLoaded]);
+  if (loading) {
+    return <Splash />
+  }
 
-  if (!fontsLoaded || !ready) return <Splash />;
-
-  return (
-    <SafeAreaView
-      style={styles.container}
-      edges={['top', 'left', 'right']}
-      onLayout={onLayoutRootView}
-    >
-      <Stack screenOptions={{ headerShown: false }} />
-      <StatusBar barStyle={"dark-content"} backgroundColor={'#FFFFFF'} translucent={false}/>
-    </SafeAreaView>
-  );
+  return <Stack screenOptions={{ headerShown: false }} />
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#FFFFFF' },
-});
+export default function RootLayout() {
+  return (
+    <AuthProvider>
+      <StatusBar barStyle='light-content' />
+      <RootNavigator />
+    </AuthProvider>
+  )
+}

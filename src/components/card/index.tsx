@@ -4,10 +4,11 @@ import { Pressable, View, Text } from 'react-native'
 import { styles } from './estilizacao.styles'
 
 type IconName =
-  | 'book-education'
+  | 'head-lightbulb'
   | 'meditation'
-  | 'movie-open-outline'
+  | 'book-open-page-variant'
   | 'food-variant'
+  | 'run'
 
 interface Card {
   id: number
@@ -21,24 +22,24 @@ export default function Cards() {
   const cards: Card[] = [
     {
       id: 1,
-      title: 'Aprenda Algo Novo',
+      title: 'Informações de saúde',
       color: '#E6F7F8',
       route: 'conhecimento/index',
-      icon: 'book-education',
+      icon: 'head-lightbulb',
     },
     {
       id: 2,
-      title: 'Respire & Equilibre',
+      title: 'Exercite-se em Casa',
       color: '#EEE8FC',
       route: 'meditacao/index',
-      icon: 'meditation',
+      icon: 'run',
     },
     {
       id: 3,
-      title: 'Tempo de Descontrair',
+      title: 'Momento de lazer',
       color: '#E6F7F8',
       route: 'entretenimento/index',
-      icon: 'movie-open-outline',
+      icon: 'book-open-page-variant',
     },
     {
       id: 4,
@@ -52,7 +53,7 @@ export default function Cards() {
   const navigation = useNavigation()
 
   const handleNavigate = (route: string) => {
-    navigation.navigate(route as never) // navegação para a tela correspondente
+    navigation.navigate(route as never) 
   }
 
   return (

@@ -1,7 +1,7 @@
 import Videos from '@/src/components/videos'
 import { LinearGradient } from 'expo-linear-gradient'
 import { ScrollView, Text, View } from 'react-native'
-import { styles } from './estilizacao.styles'
+import { styles } from '../../../src/styles/meditacao.styles'
 
 export default function Meditacao() {
   return (

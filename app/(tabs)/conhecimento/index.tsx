@@ -1,7 +1,7 @@
+import { ConhecimentoCards } from '@/src/components/cardConhecimento'
 import { LinearGradient } from 'expo-linear-gradient'
 import { ScrollView, Text } from 'react-native'
-import { styles } from './estilizacao.styles'
-import { ConhecimentoCards } from '@/src/components/cardConhecimento'
+import { styles } from '../../../src/styles/conhecimento.styles'
 
 export default function Conhecimento() {
 

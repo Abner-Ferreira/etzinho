@@ -24,9 +24,9 @@ export default function TabLayout() {
       <Tabs.Screen
         name='meditacao/index'
         options={{
-          title: 'Relax',
+          title: 'Fitness',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name='figure.yoga' color={color} />
+            <IconSymbol size={28} name='dumbbell.fill' color={color} />
           ),
         }}
       />
