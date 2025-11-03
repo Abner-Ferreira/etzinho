@@ -42,7 +42,8 @@ export default function Fitness() {
         title: string
         time: string
         thumbnail: string
-        video: string
+        video: string,
+        videoEmbedado: string,
       }[]
     }
   > = {
@@ -59,6 +60,7 @@ export default function Fitness() {
           thumbnail:
             'https://plus.unsplash.com/premium_photo-1665203618989-e04554a539b1?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=u6LAW08hKZ4',
+          videoEmbedado: 'https://www.youtube.com/embed/u6LAW08hKZ4'
         },
         {
           title: 'Respiração consciente',
@@ -66,6 +68,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1591343395902-1adcb454c4e2?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=ZuGll8XsrUs',
+          videoEmbedado: 'https://www.youtube.com/embed/ZuGll8XsrUs'
         },
         {
           title: 'Alongamento relaxante',
@@ -73,6 +76,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80',
           video: 'https://www.youtube.com/watch?v=x-UGt6cXtrU',
+          videoEmbedado: 'https://www.youtube.com/embed/x-UGt6cXtrU'
         },
       ],
     },
@@ -89,6 +93,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1609096458733-95b38583ac4e?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=Z-8sNHcncpM',
+          videoEmbedado: 'https://www.youtube.com/embed/Z-8sNHcncpM'
         },
         {
           title: 'HIIT intenso',
@@ -96,6 +101,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=ws_SdojbWec',
+          videoEmbedado: 'https://www.youtube.com/embed/ws_SdojbWec'
         },
       ],
     },
@@ -112,6 +118,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1570440828860-44258b18caa7?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=EcQA_pba3R8',
+          videoEmbedado: 'https://www.youtube.com/embed/EcQA_pba3R8'
         },
         {
           title: 'Pernas fortes',
@@ -119,6 +126,7 @@ export default function Fitness() {
           thumbnail:
             'https://plus.unsplash.com/premium_photo-1664478159939-5242198cdcb5?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=e7h7XpeDjDw',
+          videoEmbedado: 'https://www.youtube.com/embed/e7h7XpeDjDw'
         },
       ],
     },
@@ -135,6 +143,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1614634053434-1729f6ac6bd6?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=u3UjeyPOjoU',
+          videoEmbedado: 'https://www.youtube.com/embed/u3UjeyPOjoU'
         },
         {
           title: 'Pilates focado no core',
@@ -142,6 +151,7 @@ export default function Fitness() {
           thumbnail:
             'https://plus.unsplash.com/premium_photo-1698091420446-713271203f69?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=K2EumjZ68nU',
+          videoEmbedado: 'https://www.youtube.com/embed/K2EumjZ68nU'
         },
         {
           title: 'Alongamento de corpo inteiro',
@@ -149,6 +159,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1683056255281-e52a141924f0?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=hpyT2v04Bj0',
+          videoEmbedado: 'https://www.youtube.com/embed/hpyT2v04Bj0'
         },
       ],
     },
@@ -165,6 +176,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1607914660217-754fdd90041d?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=qrpxaI1k27M',
+          videoEmbedado: 'https://www.youtube.com/embed/qrpxaI1k27M'
         },
         {
           title: 'Alongamento para flexibilidade',
@@ -172,6 +184,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1683056255281-e52a141924f0?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=dwJKxbZM46Y',
+          videoEmbedado: 'https://www.youtube.com/embed/dwJKxbZM46Y'
         },
       ],
     },
@@ -188,6 +201,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1594882645126-14020914d58d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=1TpRw9iwW9k',
+          videoEmbedado: 'https://www.youtube.com/embed/1TpRw9iwW9k'
         },
         {
           title: 'Alongamento leve para recuperação',
@@ -195,6 +209,7 @@ export default function Fitness() {
           thumbnail:
             'https://plus.unsplash.com/premium_photo-1663099952371-b1dec92323e0?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=cvhQkEjB--o',
+          videoEmbedado: 'https://www.youtube.com/embed/cvhQkEjB--o'
         },
       ],
     },
