@@ -5,6 +5,7 @@ import { useState } from 'react'
 import {
   ImageBackground,
   Modal,
+  Platform,
   Pressable,
   ScrollView,
   Text,
@@ -344,32 +345,45 @@ export default function Fitness() {
         </View>
       </ScrollView>
 
-      {/* Modal com vídeo */}
-      <Modal
-        visible={!!videoUrl}
-        transparent
-        animationType='slide'
-        onRequestClose={() => setVideoUrl(null)}
+     {/* Modal com vídeo */}
+<Modal
+  visible={!!videoUrl}
+  transparent
+  animationType='slide'
+  onRequestClose={() => setVideoUrl(null)}
+>
+  <View style={styles.videoOverlay}>
+    <View style={styles.videoContainer}>
+      {Platform.OS === 'web' ? (
+        <div style={{ flex: 1, borderRadius: 12, overflow: 'hidden' }}>
+          <iframe
+            width="100%"
+            height="100%"
+            src={videoUrl || 'https://youtube.com'}
+            title="YouTube video"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+      ) : (
+        <WebView
+          source={{ uri: videoUrl || 'https://youtube.com' }}
+          style={{ flex: 1, borderRadius: 12 }}
+          javaScriptEnabled
+          domStorageEnabled
+        />
+      )}
+
+      <Pressable
+        style={styles.closeButton}
+        onPress={() => setVideoUrl(null)}
       >
-        <View style={styles.videoOverlay}>
-          <View style={styles.videoContainer}>
-            <WebView
-              source={{
-                uri: videoUrl || 'https://www.youtube.com',
-              }}
-              style={{ flex: 1, borderRadius: 12 }}
-              javaScriptEnabled
-              domStorageEnabled
-            />
-            <Pressable
-              style={styles.closeButton}
-              onPress={() => setVideoUrl(null)}
-            >
-              <MaterialCommunityIcons name='close' color='#fff' size={28} />
-            </Pressable>
-          </View>
-        </View>
-      </Modal>
+        <MaterialCommunityIcons name='close' color='#fff' size={28} />
+      </Pressable>
+    </View>
+  </View>
+</Modal>
 
       {/* Modal de categorias extras */}
       <Modal
