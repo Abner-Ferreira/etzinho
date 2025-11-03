@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
   categoriaTexto: {
     fontSize: 16,
     fontWeight: 'bold',
+    fontFamily: 'Inter_600SemiBold',
     color: '#000',
   },
   categoriaTextoAtivo: {
@@ -100,6 +101,7 @@ export const styles = StyleSheet.create({
     color: '#555',
     fontSize: 15,
     lineHeight: 22,
+    fontFamily: 'Inter_400Regular'
   },
   botaoLerLivro: {
     backgroundColor: '#1ab394',
@@ -118,5 +120,6 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#ffffffff',
     textAlign: 'center',
+    fontFamily: 'Inter_600SemiBold'
   },
 })

@@ -34,6 +34,7 @@ export const styles = StyleSheet.create({
   categoriaTexto: {
     fontSize: 16,
     fontWeight: 'bold',
+    fontFamily: 'Inter_600SemiBold',
     color: '#000',
   },
   categoriaTextoAtivo: {
@@ -55,7 +56,7 @@ export const styles = StyleSheet.create({
   },
   overlay: { ...StyleSheet.absoluteFillObject, borderRadius: 12 },
   suggestedTextContainer: { flex: 1, marginLeft: 12 },
-  suggestedTitle: { fontWeight: 'bold', fontSize: 18, color: '#222' },
+  suggestedTitle: { fontWeight: 'bold', fontSize: 18, color: '#222', fontFamily: 'Inter_600SemiBold', },
   suggestedButton: {
     backgroundColor: '#1ab394',
     paddingVertical: 10,
@@ -67,6 +68,7 @@ export const styles = StyleSheet.create({
   suggestedButtonText: { color: '#fff', fontWeight: '600', fontSize: 14 },
   sectionTitle: {
     fontSize: 18,
+    fontFamily: 'Inter_600SemiBold',
     fontWeight: '600',
     marginTop: 40,
     marginBottom: 14,
@@ -90,6 +92,7 @@ export const styles = StyleSheet.create({
   quickCardTitle: {
     color: '#fff',
     fontWeight: 'bold',
+    fontFamily: 'Inter_600SemiBold',
     fontSize: 14,
     marginTop: 8,
     textAlign: 'center',
@@ -113,6 +116,7 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#fff',
     marginBottom: 6,
+    fontFamily: 'Inter_700Bold'
   },
   challengeSubtitle: { fontSize: 13, color: '#fff' },
   challengeProgress: {
@@ -153,6 +157,7 @@ export const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 18,
     fontWeight: '700',
+    fontFamily: 'Inter_700Bold',
     marginBottom: 16,
     textAlign: 'center',
   },
@@ -180,6 +185,7 @@ modalClose: {
 modalCloseText: {
   color: '#333',
   fontWeight: 'bold',
+  fontFamily: 'Inter_600SemiBold'
 },
 webview: {
   width: '90%',

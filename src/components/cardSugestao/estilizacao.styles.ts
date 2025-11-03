@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
   objetivoCard: {
     fontSize: 16,
     lineHeight: 26,
-    fontFamily: 'Inter_500Regular',
+    fontFamily: 'Inter_400Regular',
     color: '#6E7C91',
   },
  concluidoCardContainer: {
@@ -50,7 +50,7 @@ concluidoObjetivoCard: {
 concluidoMensagem: {
   marginTop: 6,
   fontSize: 14,
-  fontFamily: 'Inter_500Medium',
+  fontFamily: 'Inter_400Regular',
   color: '#1ab394', // mantém a cor do check
   fontWeight: '500',
 },

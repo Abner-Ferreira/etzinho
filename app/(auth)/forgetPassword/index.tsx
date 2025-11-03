@@ -1,7 +1,10 @@
+import background from '@/src/assets/images/background-inicial.png'
 import logo from '@/src/assets/images/etzinho.png'
 import { AuthContext } from '@/src/contexts/AuthContext'
 import { styles } from '@/src/styles/createAccount.styles'
-import React, { useContext, useState } from 'react'
+import { MaterialIcons } from '@expo/vector-icons'
+import { router } from 'expo-router'
+import { useContext, useState } from 'react'
 import {
   Alert,
   Image,
@@ -14,9 +17,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { MaterialIcons } from '@expo/vector-icons'
-import { router } from 'expo-router'
-import background from '@/src/assets/images/background-inicial.png'
 
 export default function ForgetPassword() {
   const { forgetPassword } = useContext(AuthContext)

@@ -11,7 +11,6 @@ export const styles = StyleSheet.create({
     elevation: 2,
   },
 
-  // Cabeçalho do card (ícone + título)
   headerCard: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -33,42 +32,43 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#1ab394',
+    fontFamily: 'Inter_600SemiBold'
   },
 
-  // 🔥 Descrição agora ocupa o container inteiro
+  
   descricaoCard: {
     fontSize: 14,
     color: '#555',
     marginTop: 6,
-    marginBottom: 10, // dá respiro antes do próximo bloco
+    marginBottom: 10, 
     lineHeight: 20,
+    fontFamily: 'Inter_400Regular'
   },
 
-  // Label dos subtítulos ("Como o corpo funciona:")
   label: {
     fontWeight: 'bold',
     fontSize: 13,
     color: '#1ab394',
     marginTop: 10,
+    fontFamily: 'Inter_600SemiBold'
   },
 
-  // Texto das explicações
   text: {
     fontSize: 13,
     color: '#555',
     marginTop: 3,
     lineHeight: 19,
+    fontFamily: 'Inter_400Regular'
   },
 
-  // Subtítulo verde ("Você não está sozinho(a)!")
   subtituloCard: {
     color: '#1ab394',
     fontWeight: '700',
     marginTop: 14,
     fontSize: 14,
+    fontFamily: 'Inter_600SemiBold'
   },
 
-  // Linha com as pessoas
   rowPessoas: {
     flexDirection: 'row',
     marginTop: 10,
@@ -89,5 +89,6 @@ export const styles = StyleSheet.create({
   nomePessoa: {
     fontSize: 12,
     color: '#555',
+    fontFamily: 'Inter_400Regular'
   },
 })

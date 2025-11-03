@@ -1,9 +1,10 @@
+import background from '@/src/assets/images/background-inicial.png'
 import logo from '@/src/assets/images/etzinho.png'
 import { AuthContext } from '@/src/contexts/AuthContext'
 import { styles } from '@/src/styles/login.styles'
 import { MaterialIcons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import {
   Image,
   ImageBackground,
@@ -12,7 +13,6 @@ import {
   TouchableOpacity,
   View
 } from 'react-native'
-import background from '@/src/assets/images/background-inicial.png'
 
 
 export default function LoginScreen() {

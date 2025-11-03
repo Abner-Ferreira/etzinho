@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 10,
     paddingTop: 36,
+    
   },
   container: {
     padding: '5%',
@@ -29,7 +30,7 @@ export const styles = StyleSheet.create({
   subtitulo: {
     fontSize: SUBTITLE_FONT,
     lineHeight: 26,
-    fontFamily: 'Inter_500Regular',
+    fontFamily: 'Inter_400Regular',
     color: '#6E7C91',
   },
 
@@ -46,6 +47,7 @@ export const styles = StyleSheet.create({
     marginVertical: 30,
     textAlign: 'center',
     color: '#6E7C91',
-    fontSize: 26
+    fontSize: 26,
+    fontFamily: 'Inter_400Regular'
   }
 })

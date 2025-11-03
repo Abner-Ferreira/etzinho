@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#000',
+    fontFamily: 'Inter_600SemiBold'
   },
   categoriaTextoAtivo: {
     color: '#1ab394',
@@ -50,7 +51,7 @@ export const styles = StyleSheet.create({
     borderTopRightRadius: 16,
   },
   infoDestaque: { padding: 14 },
-  tituloDestaque: { fontSize: 18, fontWeight: 'bold', color: '#333' },
+  tituloDestaque: { fontSize: 18, fontWeight: 'bold', color: '#333', fontFamily: 'Inter_600SemiBold' },
   infoExtras: { flexDirection: 'row', alignItems: 'center', marginTop: 6 },
   infoExtrasCard: { flexDirection: 'row', alignItems: 'center', marginTop: 4 },
   textExtra: { color: '#777', fontSize: 13, marginLeft: 4 },
@@ -61,14 +62,16 @@ export const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     paddingVertical: 8,
     paddingHorizontal: 16,
+    fontFamily: 'Inter_400Regular'
   },
-  textoBotao: { color: '#fff', fontWeight: '600' },
+  textoBotao: { color: '#fff', fontWeight: '600', fontFamily: 'Inter_600SemiBold' },
   tituloSecao: {
     fontSize: 18,
     fontWeight: '600',
     color: '#333',
     marginHorizontal: 16,
     marginVertical: 24,
+    fontFamily: 'Inter_600SemiBold'
   },
   cardReceitaPequena: {
     backgroundColor: '#fff',
@@ -82,7 +85,7 @@ export const styles = StyleSheet.create({
     elevation: 2,
   },
   imagemCardPequeno: { width: '100%', height: 100, borderRadius: 10 },
-  textoCard: { fontSize: 14, fontWeight: '600', marginTop: 6 },
+  textoCard: { fontSize: 14, fontWeight: '600', marginTop: 6, fontFamily: 'Inter_600SemiBold' },
   cardLista: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -120,5 +123,5 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 8,
   },
-  textoFechar: { textAlign: 'center', color: '#fff', fontWeight: '600' },
+  textoFechar: { textAlign: 'center', color: '#fff', fontWeight: '600', fontFamily: 'Inter_600SemiBold' },
 })

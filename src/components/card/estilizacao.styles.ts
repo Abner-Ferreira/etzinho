@@ -31,8 +31,8 @@ export const styles = StyleSheet.create({
   cardText: {
     flexShrink: 1,
     fontSize: 16,
-    fontWeight: '600',
     color: '#6E7C91',
     lineHeight: 20,
+    fontFamily: 'Inter_400Regular',
   },
 })

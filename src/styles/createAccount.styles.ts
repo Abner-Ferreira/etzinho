@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
     marginBottom: 4,
     marginTop: 16,
     fontSize: 14,
+    fontFamily: 'Inter_600SemiBold'
   },
   input: {
     height: 40,
@@ -48,6 +49,7 @@ export const styles = StyleSheet.create({
     color: '#1ab394',
     fontWeight: 'bold',
     fontSize: 16,
+    fontFamily: 'Inter_600SemiBold'
   },
   forgotText: {
     marginTop: 16,
@@ -55,6 +57,7 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center',
     textDecorationLine: 'underline',
+    fontFamily: 'Inter_400Regular'
   },
   orContainer: {
     flexDirection: 'row',
@@ -70,6 +73,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: 12,
     color: '#fff',
     fontWeight: 'bold',
+    fontFamily: 'Inter_400Regular'
   },
   createAccountButton: {
     flexDirection: 'row',
@@ -83,6 +87,7 @@ export const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
+    fontFamily: 'Inter_600SemiBold'
   },
   backButton: {
   position: 'absolute',

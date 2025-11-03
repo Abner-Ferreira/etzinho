@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
+import { styles } from '@/src/styles/lazer.styles'
 
 // imagens dos livros
 import imgAlice from '@/src/assets/images/entrenimento/capa-alice-no-pais-das-maravilhas.webp'
@@ -16,7 +17,6 @@ import imgCupcake from '@/src/assets/images/entrenimento/capa-o-cupcake-da-disco
 import imgJardim from '@/src/assets/images/entrenimento/capa-o-jardim-secreto.jpg'
 import imgPequenoHeroi from '@/src/assets/images/entrenimento/capa-o-pequeno-heroi.jpg'
 import imgPequenoPrincipe from '@/src/assets/images/entrenimento/capa-o-pequeno-principe.jpg'
-import { styles } from '@/src/styles/lazer.styles'
 
 // pdfs dos livros
 import pdfAlice from '@/src/assets/livros/alice-no-pais-das-maravilhas.pdf'

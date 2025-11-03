@@ -20,15 +20,17 @@ export const styles = StyleSheet.create({
     padding: 14,
     borderRadius: 16,
     marginHorizontal: 4,
+    fontFamily: 'Inter_400Regular'
   },
   userBubble: { backgroundColor: '#b1d8d3', borderBottomRightRadius: 0 },
   botBubble: { backgroundColor: '#c1eee9ff', borderBottomLeftRadius: 0 },
 
-  bubbleText: { color: '#6E7C91', fontSize: 15, lineHeight: 20 },
+  bubbleText: { color: '#6E7C91', fontSize: 15, lineHeight: 20, fontFamily: 'Inter_400Regular' },
 
   linkText: {
     color: '#007AFF',
     textDecorationLine: 'underline',
+    fontFamily: 'Inter_400Regular'
   },
 
   avatar: { width: 32, height: 32, marginTop: 6, borderRadius: 16 },
@@ -53,5 +55,6 @@ export const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    fontFamily: 'Inter_600SemiBold'
   },
 })

@@ -14,11 +14,13 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '700',
     color: '#2b6c5b',
+    fontFamily: 'Inter_700Bold'
   },
   subtitulo: {
     fontSize: 14,
     color: '#4a7063',
     marginTop: 2,
+    fontFamily: 'Inter_400Regular'
   },
   scrollFiltros: {
     flexDirection: 'row',
@@ -40,9 +42,11 @@ export const styles = StyleSheet.create({
   filtroTexto: {
     fontSize: 13,
     color: '#444',
+    fontFamily: 'Inter_400Regular'
   },
   filtroTextoSelecionado: {
     color: '#fff',
     fontWeight: '600',
+    fontFamily: 'Inter_600SemiBold'
   },
 })

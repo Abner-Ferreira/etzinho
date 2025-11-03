@@ -22,11 +22,13 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#2E8B57',
     marginBottom: 6,
+    fontFamily: 'Inter_600SemiBold',
   },
   subtitle: {
     fontSize: 14,
     color: '#276678',
     marginBottom: 16,
+    fontFamily: 'Inter_400Regular',
   },
   button: {
     backgroundColor: '#2E8B57',
@@ -43,6 +45,7 @@ export const styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     fontWeight: 'bold',
+    fontFamily: 'Inter_600SemiBold',
   },
   image: {
     width: 90,
