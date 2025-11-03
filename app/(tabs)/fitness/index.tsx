@@ -287,7 +287,12 @@ export default function Fitness() {
               {atual.secoes.map((item, i) => (
                 <TouchableOpacity
                   key={i}
-                  onPress={() => setVideoUrl(item.video)}
+                  onPress={() => {
+                    if(Platform.OS ===  'web') return setVideoUrl(item.videoEmbedado)
+                    setVideoUrl(item.video)
+
+                  }
+                  }
                   style={styles.quickCard}
                 >
                   <ImageBackground
