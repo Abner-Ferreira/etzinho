@@ -1,4 +1,4 @@
-import logo from '@/src/assets/images/logo.png'
+import logo from '@/src/assets/images/etzinho.png'
 import { AuthContext } from '@/src/contexts/AuthContext'
 import { styles } from '@/src/styles/createAccount.styles'
 import React, { useContext, useState } from 'react'
@@ -16,6 +16,7 @@ import {
 } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 import { router } from 'expo-router'
+import background from '@/src/assets/images/background-inicial.png'
 
 export default function CreateAccount() {
   const { createAccount } = useContext(AuthContext)
@@ -93,9 +94,7 @@ export default function CreateAccount() {
 
   return (
     <ImageBackground
-      source={{
-        uri: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1170&q=80',
-      }}
+      source={background}
       style={styles.background}
       resizeMode='cover'
     >

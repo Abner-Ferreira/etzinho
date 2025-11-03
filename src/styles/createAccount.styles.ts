@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
   },
   logo: {
     width: width * 0.5,
-    height: 80,
+    height: 120,
     alignSelf: 'center',
     marginBottom: 40,
   },

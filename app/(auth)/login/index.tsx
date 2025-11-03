@@ -1,24 +1,26 @@
-import logo from '@/src/assets/images/logo.png'
+import logo from '@/src/assets/images/etzinho.png'
 import { AuthContext } from '@/src/contexts/AuthContext'
 import { styles } from '@/src/styles/login.styles'
 import { MaterialIcons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import React, { useContext, useState } from 'react'
 import {
-  Alert,
   Image,
   ImageBackground,
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native'
+import background from '@/src/assets/images/background-inicial.png'
+
 
 export default function LoginScreen() {
-  const { login } = useContext(AuthContext)
+  const { login, emailCadastrado } = useContext(AuthContext)
   const router = useRouter()
 
-  const [email, setEmail] = useState('')
+
+  const [email, setEmail] = useState( emailCadastrado || '')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 
@@ -32,9 +34,7 @@ export default function LoginScreen() {
 
   return (
     <ImageBackground
-      source={{
-        uri: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1170&q=80',
-      }}
+      source={background}
       style={styles.background}
       resizeMode='cover'
     >
@@ -80,7 +80,7 @@ export default function LoginScreen() {
           <Text style={styles.loginButtonText}>ENTRAR</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push('/(auth)/forgetPassword')}>
           <Text style={styles.forgotText}>Esqueceu a senha?</Text>
         </TouchableOpacity>
 

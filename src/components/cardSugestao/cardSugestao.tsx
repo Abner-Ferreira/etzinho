@@ -3,7 +3,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useState, useEffect, useRef } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ConfettiCannon from 'react-native-confetti-cannon';
-import { useSugestaoHora } from '../../hooks/useSugestaoDia';
+import { useSugestaoHora } from '@/src/hooks/useSugestaoDia';
 import { styles } from './estilizacao.styles';
 
 export default function SugestaoDiariaCard() {
@@ -12,9 +12,8 @@ export default function SugestaoDiariaCard() {
   const [showConfetti, setShowConfetti] = useState(false);
   const scale = useRef(new Animated.Value(0)).current;
 
-  const [timeLeft, setTimeLeft] = useState<string>(''); // contador
+  const [timeLeft, setTimeLeft] = useState<string>(''); 
 
-  // Carrega o estado da sugestão atual
   useEffect(() => {
     const loadFeita = async () => {
       if (!sugestao) return;
@@ -26,7 +25,6 @@ export default function SugestaoDiariaCard() {
     loadFeita();
   }, [sugestao]);
 
-  // Animação do check
   useEffect(() => {
     if (checked) {
       Animated.spring(scale, { toValue: 1, friction: 5, useNativeDriver: true }).start();
@@ -35,7 +33,6 @@ export default function SugestaoDiariaCard() {
     }
   }, [checked]);
 
-  // Timer regressivo para a próxima hora
   useEffect(() => {
     const updateTimeLeft = () => {
       const now = new Date();
@@ -53,7 +50,7 @@ export default function SugestaoDiariaCard() {
     return () => clearInterval(interval);
   }, [sugestao]);
 
-  // Marca ou desmarca sugestão
+  
   const toggleSugestao = async () => {
     if (!sugestao) return;
     const hora = new Date().toDateString() + "-" + new Date().getHours();

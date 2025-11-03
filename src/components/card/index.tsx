@@ -23,13 +23,13 @@ export default function Cards() {
     {
       id: 1,
       title: 'Informações de saúde',
-      color: '#E6F7F8',
+      color: '#CDEFF0',
       route: 'conhecimento/index',
       icon: 'head-lightbulb',
     },
     {
       id: 2,
-      title: 'Exercite-se em Casa',
+      title: 'Exercite-se em casa',
       color: '#EEE8FC',
       route: 'meditacao/index',
       icon: 'run',
@@ -37,13 +37,13 @@ export default function Cards() {
     {
       id: 3,
       title: 'Momento de lazer',
-      color: '#E6F7F8',
+      color: '#CDEFF0',
       route: 'entretenimento/index',
       icon: 'book-open-page-variant',
     },
     {
       id: 4,
-      title: 'Receitas que Cuidam',
+      title: 'Receitas que cuidam',
       color: '#EEE8FC',
       route: 'receitas/index',
       icon: 'food-variant',

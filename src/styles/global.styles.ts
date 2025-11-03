@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     lineHeight: 34,
     marginBottom: 20,
     fontFamily: 'Inter_700Bold',
-    color: '#1ab394',
+    color: '#2b6c5b',
   },
   subtitulo: {
     fontSize: SUBTITLE_FONT,

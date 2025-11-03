@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
-  gradient: {
+    gradient: {
     flex: 1,
     paddingBottom: 10,
     paddingTop: 36,
@@ -9,42 +9,116 @@ export const styles = StyleSheet.create({
   container: {
     padding: '5%',
   },
-
-  containerReceitas: {
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 30,
-    marginVertical: 20,
-    width: '100%',
-
-    // iOS shadow
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-
-    // Android shadow
-    elevation: 5,
+  categoriasContainer: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+    marginTop: 30,
   },
-
-  titulo: {
-    fontSize: 28,
-    lineHeight: 34,
-    marginBottom: 20,
-    fontFamily: 'Inter_700Bold',
+  categoriaTag: {
+    paddingBottom: 12,
+    paddingHorizontal: 16,
+    marginRight: 20,
+    borderBottomWidth: 2,
+    borderBottomColor: 'transparent',
+  },
+  categoriaAtiva: {
+    borderBottomColor: '#1ab394',
+  },
+  categoriaTexto: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  categoriaTextoAtivo: {
     color: '#1ab394',
   },
-  descricao: {
-    fontSize: 16,
-    lineHeight: 34,
-    fontFamily: 'Inter_400Regular',
-    color: '#6E7C91',
-    textAlign: 'justify'
+  receitaDoDia: {
+    marginHorizontal: 16,
+    borderRadius: 16,
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOpacity: 0.05,
+    shadowRadius: 6,
+    elevation: 2,
+    marginBottom: 20,
   },
-  textoSemReceita: {
-    marginHorizontal: 'auto',
-    marginVertical: 30,
-    color: '#6E7C91',
-    fontSize: 24
-  }
+  imagemDestaque: {
+    width: '100%',
+    height: 180,
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+  },
+  infoDestaque: { padding: 14 },
+  tituloDestaque: { fontSize: 18, fontWeight: 'bold', color: '#333' },
+  infoExtras: { flexDirection: 'row', alignItems: 'center', marginTop: 6 },
+  infoExtrasCard: { flexDirection: 'row', alignItems: 'center', marginTop: 4 },
+  textExtra: { color: '#777', fontSize: 13, marginLeft: 4 },
+  botaoVerReceita: {
+    marginTop: 10,
+    backgroundColor: '#0b7d6d',
+    borderRadius: 20,
+    alignSelf: 'flex-start',
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+  },
+  textoBotao: { color: '#fff', fontWeight: '600' },
+  tituloSecao: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#333',
+    marginHorizontal: 16,
+    marginVertical: 24,
+  },
+  cardReceitaPequena: {
+    backgroundColor: '#fff',
+    borderRadius: 14,
+    marginLeft: 16,
+    padding: 10,
+    width: 160,
+    shadowColor: '#000',
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  imagemCardPequeno: { width: '100%', height: 100, borderRadius: 10 },
+  textoCard: { fontSize: 14, fontWeight: '600', marginTop: 6 },
+  cardLista: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    marginHorizontal: 16,
+    marginVertical: 6,
+    padding: 10,
+    shadowColor: '#000',
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  imgLista: { width: 60, height: 60, borderRadius: 8 },
+  tituloLista: { fontSize: 15, fontWeight: '600', color: '#333' },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  modalContent: {
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    padding: 20,
+    width: '100%',
+    maxHeight: '80%',
+  },
+  modalTitulo: { fontSize: 18, fontWeight: 'bold', marginBottom: 10 },
+  modalDescricao: { fontSize: 15, color: '#555', lineHeight: 22 },
+  botaoFechar: {
+    marginTop: 15,
+    backgroundColor: '#0b7d6d',
+    paddingVertical: 10,
+    borderRadius: 8,
+  },
+  textoFechar: { textAlign: 'center', color: '#fff', fontWeight: '600' },
 })

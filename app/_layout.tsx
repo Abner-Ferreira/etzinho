@@ -28,7 +28,7 @@ function RootNavigator() {
 export default function RootLayout() {
   return (
     <AuthProvider>
-      <StatusBar barStyle='light-content' />
+      <StatusBar barStyle='dark-content' />
       <RootNavigator />
     </AuthProvider>
   )

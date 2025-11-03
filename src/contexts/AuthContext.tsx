@@ -4,7 +4,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signOut,
+  sendPasswordResetEmail,
 } from 'firebase/auth'
 import { get, ref, set } from 'firebase/database'
 import React, { createContext, useEffect, useState } from 'react'
@@ -25,6 +25,8 @@ interface AuthContextType {
     email: string,
     password: string
   ) => Promise<void>
+  forgetPassword: (email: string) => Promise<string | void>
+  emailCadastrado: string
 }
 
 export const AuthContext = createContext<AuthContextType>({
@@ -32,10 +34,13 @@ export const AuthContext = createContext<AuthContextType>({
   loading: true,
   login: async () => {},
   createAccount: async () => {},
+  forgetPassword: async () => {},
+  emailCadastrado: ''
 })
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<UserType | null>(null)
+  const [emailCadastrado, setEmailCadastrado] = useState('')
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -64,24 +69,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       'Usuário não encontrado. Verifique o e-mail informado.',
     'auth/wrong-password': 'Senha incorreta. Tente novamente.',
     'auth/email-already-in-use': 'Este e-mail já está em uso por outra conta.',
-    'auth/operation-not-allowed': 'Este método de login não está habilitado.',
-    'auth/too-many-requests':
-      'Muitas tentativas de login. Tente novamente mais tarde.',
-    'auth/network-request-failed':
-      'Falha na conexão de rede. Verifique sua internet.',
-    'auth/invalid-credential': 'Credenciais inválidas. Faça login novamente.',
-    'auth/invalid-verification-code': 'Código de verificação inválido.',
-    'auth/invalid-verification-id': 'ID de verificação inválido.',
-    'auth/missing-email': 'Informe um endereço de e-mail.',
-    'auth/missing-password': 'Informe sua senha.',
-    'auth/requires-recent-login':
-      'Por segurança, faça login novamente para realizar esta ação.',
-    'auth/account-exists-with-different-credential':
-      'Já existe uma conta com este e-mail, criada por outro método de login.',
-    'auth/invalid-api-key': 'Erro interno: chave de API inválida.',
-    'auth/app-not-authorized': 'Aplicativo não autorizado a usar autenticação.',
-    'auth/unauthorized-domain': 'Domínio não autorizado para login.',
-    'auth/invalid-user-token': 'Sessão expirada. Faça login novamente.',
+    'auth/too-many-requests': 'Muitas tentativas. Tente novamente mais tarde.',
+    'auth/network-request-failed': 'Falha na conexão. Verifique sua internet.',
     'auth/internal-error': 'Erro interno. Tente novamente mais tarde.',
   }
 
@@ -93,7 +82,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         password
       )
       const firebaseUser = userCredential.user
-
       const snapshot = await get(ref(db, `users/${firebaseUser.uid}`))
       if (snapshot.exists()) {
         setUser({
@@ -101,12 +89,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           nome: snapshot.val().name,
           email: snapshot.val().email,
         })
-      } 
+      }
     } catch (error: any) {
-      const errorMessage =
+      const message =
         firebaseErrorMessages[error.code] ||
         'Erro ao fazer login. Verifique seus dados.'
-      Alert.alert('Erro no login', errorMessage)
+      Alert.alert('Erro no login', message)
       console.log('Erro Firebase login:', error.code)
     }
   }
@@ -119,24 +107,44 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         password
       )
       const user = userCredential.user
-      await set(ref(db, 'users/' + user.uid), {
-        name,
-        email,
+      await set(ref(db, 'users/' + user.uid), { name, email })
+      Alert.alert('Sucesso', 'Conta criada com sucesso!')
+    } catch (error: any) {
+      const message =
+        firebaseErrorMessages[error.code] ||
+        'Erro ao criar conta. Tente novamente.'
+      Alert.alert('Erro no cadastro', message)
+      console.log('Erro Firebase cadastro:', error.code)
+    }
+  }
+
+  async function forgetPassword(email: string) {
+    try {
+      // Tenta enviar o e-mail de redefinição
+      await sendPasswordResetEmail(auth, email)
+      .then(() => {
+        // Mensagem genérica
+        Alert.alert(
+          'Verifique seu e-mail',
+          'Se o e-mail estiver cadastrado, você receberá um link para redefinir sua senha.'
+        )
+        
       })
 
-      Alert.alert('Sucesso', 'Conta criada com sucesso!')
+
+      setEmailCadastrado(email)
     } catch (error: any) {
       const errorMessage =
         firebaseErrorMessages[error.code] ||
-        'Erro ao criar conta. Tente novamente.'
-      Alert.alert('Erro no cadastro', errorMessage)
-      console.log('Erro Firebase cadastro:', error.code)
+        'Erro ao enviar o e-mail. Verifique seus dados.'
+      Alert.alert('Erro', errorMessage)
+      console.log('Erro Firebase forgetPassword:', error.code)
     }
   }
 
   return (
     <AuthContext.Provider
-      value={{ user, loading, login, createAccount }}
+      value={{ user, loading, login, createAccount, forgetPassword, emailCadastrado }}
     >
       {children}
     </AuthContext.Provider>
