@@ -205,7 +205,6 @@ export default function Fitness() {
   return (
     <LinearGradient colors={['#d4f1e6', '#e9f9f5']} style={styles.gradient}>
       <ScrollView contentContainerStyle={styles.container}>
-
         {/* Filtros */}
         <ScrollView
           horizontal
@@ -345,45 +344,55 @@ export default function Fitness() {
         </View>
       </ScrollView>
 
-     {/* Modal com vídeo */}
-<Modal
-  visible={!!videoUrl}
-  transparent
-  animationType='slide'
-  onRequestClose={() => setVideoUrl(null)}
->
-  <View style={styles.videoOverlay}>
-    <View style={styles.videoContainer}>
-      {Platform.OS === 'web' ? (
-        <div style={{ flex: 1, borderRadius: 12, overflow: 'hidden' }}>
-          <iframe
-            width="100%"
-            height="100%"
-            src={videoUrl || 'https://youtube.com'}
-            title="YouTube video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
-      ) : (
-        <WebView
-          source={{ uri: videoUrl || 'https://youtube.com' }}
-          style={{ flex: 1, borderRadius: 12 }}
-          javaScriptEnabled
-          domStorageEnabled
-        />
-      )}
-
-      <Pressable
-        style={styles.closeButton}
-        onPress={() => setVideoUrl(null)}
+      {/* Modal com vídeo */}
+      <Modal
+        visible={!!videoUrl}
+        transparent
+        animationType='slide'
+        onRequestClose={() => setVideoUrl(null)}
       >
-        <MaterialCommunityIcons name='close' color='#fff' size={28} />
-      </Pressable>
-    </View>
-  </View>
-</Modal>
+        <View style={styles.videoOverlay}>
+          <View style={styles.videoContainer}>
+            {Platform.OS === 'web' ? (
+              <div
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: 12,
+                  overflow: 'hidden',
+                  display: 'block',
+                }}
+              >
+                <iframe
+                  width='100%'
+                  height='100%'
+                  src={videoUrl ?? undefined}
+                  title='YouTube video'
+                  frameBorder='0'
+                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                  allowFullScreen
+                />
+              </div>
+            ) : (
+              videoUrl && (
+                <WebView
+                  source={{ uri: videoUrl }}
+                  style={{ flex: 1, borderRadius: 12 }}
+                  javaScriptEnabled
+                  domStorageEnabled
+                />
+              )
+            )}
+
+            <Pressable
+              style={styles.closeButton}
+              onPress={() => setVideoUrl(null)}
+            >
+              <MaterialCommunityIcons name='close' color='#fff' size={28} />
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
 
       {/* Modal de categorias extras */}
       <Modal
