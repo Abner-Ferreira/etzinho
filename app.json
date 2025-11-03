@@ -21,7 +21,14 @@
     },
     "web": {
       "output": "static",
-      "favicon": "./src/assets/images/etzinho.png"
+      "favicon": "./src/assets/images/etzinho.png",
+      "build": {
+        "babel": {
+          "include": [
+            "@expo-google-fonts/inter"
+          ]
+        }
+      }
     },
     "plugins": [
       "expo-router",

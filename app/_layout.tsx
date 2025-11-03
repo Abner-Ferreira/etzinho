@@ -2,7 +2,8 @@ import { AuthProvider, AuthContext } from '@/src/contexts/AuthContext'
 import { Stack, useRouter } from 'expo-router'
 import React, { useContext, useEffect } from 'react'
 import Splash from '@/src/components/splash'
-import { StatusBar } from 'react-native'
+import { StatusBar, Platform } from 'react-native'
+import { useFonts, Inter_700Bold } from '@expo-google-fonts/inter'
 
 function RootNavigator() {
   const { user, loading } = useContext(AuthContext)
@@ -10,11 +11,15 @@ function RootNavigator() {
 
   useEffect(() => {
     if (!loading) {
-      if (user) {
-        router.replace('/(tabs)')
-      } else {
-        router.replace('/(auth)/login')
-      }
+      const timeout = setTimeout(() => {
+        if (user) {
+          router.replace('/(tabs)')
+        } else {
+          router.replace('/(auth)/login')
+        }
+      }, Platform.OS === 'web' ? 100 : 0)
+
+      return () => clearTimeout(timeout)
     }
   }, [user, loading])
 
@@ -26,9 +31,17 @@ function RootNavigator() {
 }
 
 export default function RootLayout() {
+  const [fontsLoaded] = useFonts({
+    Inter_700Bold,
+  })
+
+  if (!fontsLoaded) {
+    return <Splash />
+  }
+
   return (
     <AuthProvider>
-      <StatusBar barStyle='dark-content' />
+      <StatusBar barStyle="dark-content" />
       <RootNavigator />
     </AuthProvider>
   )
