@@ -1,19 +1,11 @@
-import ufo from '@/src/assets/UFO.json'
-import LottieView from 'lottie-react-native'
-import { View } from 'react-native'
-import { styles } from './estilizacao.styles'
+import { Platform } from 'react-native'
 
-export default function SpaceLoading() {
-  return (
-    <View style={styles.container}>
-      <LottieView
-        source={ufo}
-        autoPlay
-        loop
-        style={styles.animation}
-      />
-    </View>
-  )
+let SpaceLoading
+
+if (Platform.OS === 'web') {
+  SpaceLoading = require('./SpaceLoading.web').default
+} else {
+  SpaceLoading = require('./SpaceLoading.native').default
 }
 
-
+export default SpaceLoading
