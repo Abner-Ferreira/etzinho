@@ -1,5 +1,6 @@
 import background from '@/src/assets/images/background-inicial.png'
 import logo from '@/src/assets/images/etzinho.png'
+import SpaceLoading from '@/src/components/spaceLoading'
 import { AuthContext } from '@/src/contexts/AuthContext'
 import { styles } from '@/src/styles/createAccount.styles'
 import { MaterialIcons } from '@expo/vector-icons'
@@ -19,7 +20,7 @@ import {
 } from 'react-native'
 
 export default function CreateAccount() {
-  const { createAccount } = useContext(AuthContext)
+  const { createAccount, authLoading } = useContext(AuthContext)
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -189,7 +190,9 @@ export default function CreateAccount() {
               disabled={!isPasswordValid}
               onPress={handleCreateAccount}
             >
-              <Text style={styles.loginButtonText}>CRIAR CONTA</Text>
+              {
+                authLoading ? <SpaceLoading /> : <Text style={styles.loginButtonText}>CRIAR CONTA</Text>
+              }
             </TouchableOpacity>
           </View>
         </ScrollView>

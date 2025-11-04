@@ -1,8 +1,9 @@
 import axios from 'axios'
 import Constants from 'expo-constants'
 
-const CHATBOT_KEY = Constants.expoConfig?.extra?.CHATBOT_KEY;
-const MODEL_ID = 'openai/gpt-4o'
+const CHATBOT_KEY = Constants.expoConfig?.extra?.CHATBOT_GEMINI_KEY
+const MODEL_ID = 'gemini-2.5-flash'
+
 const SYSTEM_PROMPT = `
 Você é o ETzinho 👽, um assistente carismático e divertido focado em saúde, autocuidado e bem-estar.
 
@@ -27,7 +28,7 @@ Você é o ETzinho 👽, um assistente carismático e divertido focado em saúde
   - Diga algo 100% positivo e lembre o usuário de que ele é importante e não está sozinho.
   - Peça para ele entrar em contato com ajuda profissional imediatamente.
   - A resposta deve conter um link clicável para que o usuário possa ligar diretamente.
-  - Exemplo de resposta (pode adaptar o texto, mas mantenha o link):
+  - Exemplo:
     “Ei, terráqueo 💚, sinto muito que esteja se sentindo assim. Você é importante e não está sozinho. 🌎  
     Por favor, fale agora mesmo com alguém que pode te ouvir e ajudar:  
     👉 [Ligar para o CVV (188)](tel:188) — é gratuito e funciona 24h com pessoas prontas para te acolher.  
@@ -36,38 +37,44 @@ Você é o ETzinho 👽, um assistente carismático e divertido focado em saúde
 **Restrições:**
 - Evite qualquer tema político, ofensivo, sexual ou fora de autocuidado, saúde mental e física.
 - Seja breve, mas acolhedor e engajador (2 a 3 frases no máximo).
-`;
-
+`
 
 export async function sendMessageToChatbot(
   messages: { from: 'user' | 'bot'; text: string }[]
 ): Promise<string> {
   try {
     const formattedMessages = [
-      { role: 'system', content: SYSTEM_PROMPT },
+      {
+        role: 'user',
+        parts: [{ text: SYSTEM_PROMPT }],
+      },
       ...messages.map(msg => ({
-        role: msg.from === 'user' ? 'user' : 'assistant',
-        content: msg.text,
+        role: msg.from === 'user' ? 'user' : 'model',
+        parts: [{ text: msg.text }],
       })),
     ]
 
     const response = await axios.post(
-      'https://openrouter.ai/api/v1/chat/completions',
+      `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_ID}:generateContent?key=${CHATBOT_KEY}`,
       {
-        model: MODEL_ID,
-        messages: formattedMessages,
+        contents: formattedMessages,
       },
       {
         headers: {
-          Authorization: `Bearer ${CHATBOT_KEY}`,
           'Content-Type': 'application/json',
         },
       }
     )
 
-    return response.data.choices[0].message.content
-  } catch (error) {
-    console.error('Erro ao conversar com o OpenRouter:', error)
-    return 'Hmm... Algo estranho aconteceu no espaço! Não consegui processar sua mensagem. Por favor, envie novamente ou mais tarde.'
+    return (
+      response.data?.candidates?.[0]?.content?.parts?.[0]?.text ??
+      'Hmm... Não consegui processar sua mensagem, terráqueo! 🚀'
+    )
+  } catch (error: any) {
+    console.error(
+      'Erro ao conversar com o Gemini:',
+      error.response?.data || error.message
+    )
+    return 'Hmm... Algo estranho aconteceu no espaço! 🚀 Tente novamente mais tarde.'
   }
 }

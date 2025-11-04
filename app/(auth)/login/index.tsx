@@ -1,5 +1,6 @@
 import background from '@/src/assets/images/background-inicial.png'
 import logo from '@/src/assets/images/etzinho.png'
+import EtzinhoLoading from '@/src/components/spaceLoading'
 import { AuthContext } from '@/src/contexts/AuthContext'
 import { styles } from '@/src/styles/login.styles'
 import { MaterialIcons } from '@expo/vector-icons'
@@ -16,7 +17,7 @@ import {
 
 
 export default function LoginScreen() {
-  const { login, emailCadastrado } = useContext(AuthContext)
+  const { login, emailCadastrado, authLoading } = useContext(AuthContext)
   const router = useRouter()
 
 
@@ -77,7 +78,9 @@ export default function LoginScreen() {
         </View>
 
         <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-          <Text style={styles.loginButtonText}>ENTRAR</Text>
+          {
+            authLoading ? <EtzinhoLoading /> : <Text style={styles.loginButtonText}>ENTRAR</Text>
+          }
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push('/(auth)/forgetPassword')}>
