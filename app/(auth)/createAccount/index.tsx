@@ -1,4 +1,4 @@
-import background from '@/src/assets/images/background-inicial.png'
+import background from '@/src/assets/images/background-inicial-2.png'
 import logo from '@/src/assets/images/etzinho.png'
 import SpaceLoading from '@/src/components/spaceLoading'
 import { AuthContext } from '@/src/contexts/AuthContext'
