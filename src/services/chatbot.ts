@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Constants from 'expo-constants'
 
-const CHATBOT_KEY = Constants.expoConfig?.extra?.CHATBOT_GEMINI_KEY
+const CHATBOT_KEY = Constants.expoConfig?.extra?.CHATBOT_KEY
 const MODEL_ID = 'gemini-2.5-flash'
 
 const SYSTEM_PROMPT = `

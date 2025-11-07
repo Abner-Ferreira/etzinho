@@ -1,14 +1,18 @@
+import React, { createContext, useEffect, useState } from 'react'
+import { Alert } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { auth, db } from '@/src/services/firebaseConfig'
-import { router } from 'expo-router'
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
+  signOut,
 } from 'firebase/auth'
 import { get, ref, set } from 'firebase/database'
-import React, { createContext, useEffect, useState } from 'react'
-import { Alert } from 'react-native'
+
+// Tempo limite da sessao (1 hora)
+const SESSION_DURATION = 60 * 60 * 1000
 
 interface UserType {
   uid: string
@@ -18,11 +22,12 @@ interface UserType {
 
 interface AuthContextType {
   user: UserType | null
-  loading: boolean 
-  authLoading: boolean 
+  loading: boolean
+  authLoading: boolean
   login: (email: string, password: string) => Promise<void>
   createAccount: (name: string, email: string, password: string) => Promise<void>
   forgetPassword: (email: string) => Promise<void>
+  logout: () => Promise<void>
   emailCadastrado: string
 }
 
@@ -33,6 +38,7 @@ export const AuthContext = createContext<AuthContextType>({
   login: async () => {},
   createAccount: async () => {},
   forgetPassword: async () => {},
+  logout: async () => {},
   emailCadastrado: '',
 })
 
@@ -42,9 +48,23 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(true)
   const [authLoading, setAuthLoading] = useState(false)
 
+  // Verifica login e expiracao da sessao
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async currentUser => {
-      if (currentUser) {
+      const loginTimestamp = await AsyncStorage.getItem('loginTimestamp')
+
+      if (currentUser && loginTimestamp) {
+        const elapsed = Date.now() - Number(loginTimestamp)
+
+        if (elapsed > SESSION_DURATION) {
+          // Sessao expirou
+          await handleLogout()
+          Alert.alert('Sessão expirada', 'Por favor, faça login novamente.')
+          setLoading(false)
+          return
+        }
+
+        // Sessao ainda valida
         const snapshot = await get(ref(db, `users/${currentUser.uid}`))
         if (snapshot.exists()) {
           setUser({
@@ -56,11 +76,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       } else {
         setUser(null)
       }
+
       setLoading(false)
     })
+
     return unsubscribe
   }, [])
 
+  // Mensagens de erros do firebase
   const firebaseErrorMessages: Record<string, string> = {
     'auth/invalid-email': 'O endereço de e-mail é inválido.',
     'auth/user-disabled': 'Esta conta foi desativada.',
@@ -72,18 +95,23 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     'auth/internal-error': 'Erro interno. Tente novamente mais tarde.',
   }
 
+  // Funcao login
   async function login(email: string, password: string) {
     setAuthLoading(true)
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password)
       const firebaseUser = userCredential.user
       const snapshot = await get(ref(db, `users/${firebaseUser.uid}`))
+
       if (snapshot.exists()) {
         setUser({
           uid: firebaseUser.uid,
           nome: snapshot.val().name,
           email: snapshot.val().email,
         })
+        
+        await AsyncStorage.setItem('loginTimestamp', Date.now().toString())
+
         Alert.alert('Bem-vindo!', `Olá, ${snapshot.val().name}!`)
       }
     } catch (error: any) {
@@ -97,6 +125,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
+  // Funcao criar conta
   async function createAccount(name: string, email: string, password: string) {
     setAuthLoading(true)
     try {
@@ -114,6 +143,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
+  // Funcao esqueceu senha
   async function forgetPassword(email: string) {
     setAuthLoading(true)
     try {
@@ -133,6 +163,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
+  // Funcao logout
+  async function handleLogout() {
+    try {
+      await signOut(auth)
+      await AsyncStorage.removeItem('loginTimestamp')
+      setUser(null)
+    } catch (error) {
+      console.log('Erro ao fazer logout:', error)
+    }
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -142,6 +183,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         login,
         createAccount,
         forgetPassword,
+        logout: handleLogout,
         emailCadastrado,
       }}
     >

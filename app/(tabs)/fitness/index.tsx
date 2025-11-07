@@ -38,12 +38,13 @@ export default function Fitness() {
       icone: keyof typeof MaterialCommunityIcons.glyphMap
       botao: string
       imagem: string
+      treino: string
       secoes: {
         title: string
         time: string
         thumbnail: string
-        video: string,
-        videoEmbedado: string,
+        video: string
+        videoEmbedado: string
       }[]
     }
   > = {
@@ -51,6 +52,7 @@ export default function Fitness() {
       titulo: 'Yoga matinal: 15 Minutos',
       icone: 'spa',
       botao: 'Começar agora',
+      treino: 'https://www.youtube.com/watch?v=zmPZt9vNtGY ',
       imagem:
         'https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&w=800&q=80',
       secoes: [
@@ -60,7 +62,7 @@ export default function Fitness() {
           thumbnail:
             'https://plus.unsplash.com/premium_photo-1665203618989-e04554a539b1?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=-nffHYav4Ac',
-          videoEmbedado: 'https://www.youtube.com/embed/-nffHYav4Ac'
+          videoEmbedado: 'https://www.youtube.com/embed/-nffHYav4Ac',
         },
         {
           title: 'Respiração consciente',
@@ -68,7 +70,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1591343395902-1adcb454c4e2?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=OvY0XFQUS4U',
-          videoEmbedado: 'https://www.youtube.com/embed/OvY0XFQUS4U'
+          videoEmbedado: 'https://www.youtube.com/embed/OvY0XFQUS4U',
         },
         {
           title: 'Yoga noturno restaurativo',
@@ -76,13 +78,14 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80',
           video: 'https://www.youtube.com/watch?v=7r6_XMprzEY',
-          videoEmbedado: 'https://www.youtube.com/embed/7r6_XMprzEY'
+          videoEmbedado: 'https://www.youtube.com/embed/7r6_XMprzEY',
         },
       ],
     },
     HIIT: {
-      titulo: 'HIIT power: 12 minutos',
+      titulo: 'HIIT power: 20 minutos',
       icone: 'lightning-bolt',
+      treino: 'https://www.youtube.com/watch?v=sinMqL8kIoM',
       botao: 'Queimar calorias',
       imagem:
         'https://plus.unsplash.com/premium_photo-1664910207555-fac63513e7ad?auto=format&fit=crop&w=800&q=80',
@@ -93,7 +96,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1609096458733-95b38583ac4e?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=mfae8Vxa2Wo',
-          videoEmbedado: 'https://www.youtube.com/embed/mfae8Vxa2Wo'
+          videoEmbedado: 'https://www.youtube.com/embed/mfae8Vxa2Wo',
         },
         {
           title: 'HIIT intenso',
@@ -101,13 +104,14 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=_WdUkEriE20',
-          videoEmbedado: 'https://www.youtube.com/embed/_WdUkEriE20'
+          videoEmbedado: 'https://www.youtube.com/embed/_WdUkEriE20',
         },
       ],
     },
     Força: {
-      titulo: 'Treino de força: pernas e glúteos',
+      titulo: 'Core forte e definido',
       icone: 'dumbbell',
+      treino: 'https://www.youtube.com/watch?v=tGI07jNY8qc',
       botao: 'Treinar agora',
       imagem:
         'https://plus.unsplash.com/premium_photo-1661265933107-85a5dbd815af?auto=format&fit=crop&w=800&q=80',
@@ -118,7 +122,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1570440828860-44258b18caa7?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=XxVL-JlU18A',
-          videoEmbedado: 'https://www.youtube.com/embed/XxVL-JlU18A'
+          videoEmbedado: 'https://www.youtube.com/embed/XxVL-JlU18A',
         },
         {
           title: 'Pernas e abdômen fortes',
@@ -126,13 +130,14 @@ export default function Fitness() {
           thumbnail:
             'https://plus.unsplash.com/premium_photo-1664478159939-5242198cdcb5?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=Mj4rkX3pwRY',
-          videoEmbedado: 'https://www.youtube.com/embed/Mj4rkX3pwRY'
+          videoEmbedado: 'https://www.youtube.com/embed/Mj4rkX3pwRY',
         },
       ],
     },
     Pilates: {
       titulo: 'Pilates suave: 20 minutos',
       icone: 'yoga',
+      treino: 'https://www.youtube.com/watch?v=RUpsq4SyzDY',
       botao: 'Iniciar sessão',
       imagem:
         'https://plus.unsplash.com/premium_photo-1737321091196-721f11e47ede?auto=format&fit=crop&w=800&q=80',
@@ -143,7 +148,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1614634053434-1729f6ac6bd6?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=u3UjeyPOjoU',
-          videoEmbedado: 'https://www.youtube.com/embed/u3UjeyPOjoU'
+          videoEmbedado: 'https://www.youtube.com/embed/u3UjeyPOjoU',
         },
         {
           title: 'Pilates focado no core',
@@ -151,7 +156,7 @@ export default function Fitness() {
           thumbnail:
             'https://plus.unsplash.com/premium_photo-1698091420446-713271203f69?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=K2EumjZ68nU',
-          videoEmbedado: 'https://www.youtube.com/embed/K2EumjZ68nU'
+          videoEmbedado: 'https://www.youtube.com/embed/K2EumjZ68nU',
         },
         {
           title: 'Alongamento de corpo inteiro',
@@ -159,13 +164,14 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1683056255281-e52a141924f0?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=hpyT2v04Bj0',
-          videoEmbedado: 'https://www.youtube.com/embed/hpyT2v04Bj0'
+          videoEmbedado: 'https://www.youtube.com/embed/hpyT2v04Bj0',
         },
       ],
     },
     Alongamento: {
       titulo: 'Alongamento relaxante: 10 min',
       icone: 'human-handsup',
+      treino: 'https://www.youtube.com/watch?v=o0cyRDLV7tg',
       botao: 'Começar agora',
       imagem:
         'https://images.unsplash.com/photo-1562771379-eafdca7a02f8?auto=format&fit=crop&w=800&q=80',
@@ -176,7 +182,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1607914660217-754fdd90041d?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=qrpxaI1k27M',
-          videoEmbedado: 'https://www.youtube.com/embed/qrpxaI1k27M'
+          videoEmbedado: 'https://www.youtube.com/embed/qrpxaI1k27M',
         },
         {
           title: 'Alongamento para flexibilidade',
@@ -184,13 +190,14 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1683056255281-e52a141924f0?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=dwJKxbZM46Y',
-          videoEmbedado: 'https://www.youtube.com/embed/dwJKxbZM46Y'
+          videoEmbedado: 'https://www.youtube.com/embed/dwJKxbZM46Y',
         },
       ],
     },
     'Recuperação Ativa': {
       titulo: 'Recuperação ativa: corpo e mente',
       icone: 'meditation',
+      treino: 'https://www.youtube.com/watch?v=P_r-3CNu0rw',
       botao: 'Relaxar agora',
       imagem:
         'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80',
@@ -201,7 +208,7 @@ export default function Fitness() {
           thumbnail:
             'https://images.unsplash.com/photo-1594882645126-14020914d58d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=1TpRw9iwW9k',
-          videoEmbedado: 'https://www.youtube.com/embed/1TpRw9iwW9k'
+          videoEmbedado: 'https://www.youtube.com/embed/1TpRw9iwW9k',
         },
         {
           title: 'Alongamento leve para recuperação',
@@ -209,7 +216,7 @@ export default function Fitness() {
           thumbnail:
             'https://plus.unsplash.com/premium_photo-1663099952371-b1dec92323e0?auto=format&fit=crop&q=80&w=800',
           video: 'https://www.youtube.com/watch?v=cvhQkEjB--o',
-          videoEmbedado: 'https://www.youtube.com/embed/cvhQkEjB--o'
+          videoEmbedado: 'https://www.youtube.com/embed/cvhQkEjB--o',
         },
       ],
     },
@@ -273,7 +280,21 @@ export default function Fitness() {
           </ImageBackground>
           <View style={styles.suggestedTextContainer}>
             <Text style={styles.suggestedTitle}>{atual.titulo}</Text>
-            <TouchableOpacity style={styles.suggestedButton}>
+            <TouchableOpacity
+              style={styles.suggestedButton}
+              onPress={() => {
+
+                let videoLink = atual.treino
+                
+                if (Platform.OS === 'web') {
+                  if (videoLink.includes('watch?v=')) {
+                    videoLink = videoLink.replace('watch?v=', 'embed/')
+                  }
+                }
+
+                setVideoUrl(videoLink)
+              }}
+            >
               <Text style={styles.suggestedButtonText}>{atual.botao}</Text>
             </TouchableOpacity>
           </View>
@@ -288,11 +309,10 @@ export default function Fitness() {
                 <TouchableOpacity
                   key={i}
                   onPress={() => {
-                    if(Platform.OS ===  'web') return setVideoUrl(item.videoEmbedado)
+                    if (Platform.OS === 'web')
+                      return setVideoUrl(item.videoEmbedado)
                     setVideoUrl(item.video)
-
-                  }
-                  }
+                  }}
                   style={styles.quickCard}
                 >
                   <ImageBackground
