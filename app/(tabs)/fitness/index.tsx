@@ -59,24 +59,24 @@ export default function Fitness() {
           time: '10 min',
           thumbnail:
             'https://plus.unsplash.com/premium_photo-1665203618989-e04554a539b1?auto=format&fit=crop&q=80&w=800',
-          video: 'https://www.youtube.com/watch?v=u6LAW08hKZ4',
-          videoEmbedado: 'https://www.youtube.com/embed/u6LAW08hKZ4'
+          video: 'https://www.youtube.com/watch?v=-nffHYav4Ac',
+          videoEmbedado: 'https://www.youtube.com/embed/-nffHYav4Ac'
         },
         {
           title: 'Respiração consciente',
-          time: '8 min',
+          time: '15 min',
           thumbnail:
             'https://images.unsplash.com/photo-1591343395902-1adcb454c4e2?auto=format&fit=crop&q=80&w=800',
-          video: 'https://www.youtube.com/watch?v=ZuGll8XsrUs',
-          videoEmbedado: 'https://www.youtube.com/embed/ZuGll8XsrUs'
+          video: 'https://www.youtube.com/watch?v=OvY0XFQUS4U',
+          videoEmbedado: 'https://www.youtube.com/embed/OvY0XFQUS4U'
         },
         {
-          title: 'Alongamento relaxante',
-          time: '12 min',
+          title: 'Yoga noturno restaurativo',
+          time: '24 min',
           thumbnail:
             'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80',
-          video: 'https://www.youtube.com/watch?v=x-UGt6cXtrU',
-          videoEmbedado: 'https://www.youtube.com/embed/x-UGt6cXtrU'
+          video: 'https://www.youtube.com/watch?v=7r6_XMprzEY',
+          videoEmbedado: 'https://www.youtube.com/embed/7r6_XMprzEY'
         },
       ],
     },
@@ -92,16 +92,16 @@ export default function Fitness() {
           time: '8 min',
           thumbnail:
             'https://images.unsplash.com/photo-1609096458733-95b38583ac4e?auto=format&fit=crop&q=80&w=800',
-          video: 'https://www.youtube.com/watch?v=Z-8sNHcncpM',
-          videoEmbedado: 'https://www.youtube.com/embed/Z-8sNHcncpM'
+          video: 'https://www.youtube.com/watch?v=mfae8Vxa2Wo',
+          videoEmbedado: 'https://www.youtube.com/embed/mfae8Vxa2Wo'
         },
         {
           title: 'HIIT intenso',
-          time: '15 min',
+          time: '20 min',
           thumbnail:
             'https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&q=80&w=800',
-          video: 'https://www.youtube.com/watch?v=ws_SdojbWec',
-          videoEmbedado: 'https://www.youtube.com/embed/ws_SdojbWec'
+          video: 'https://www.youtube.com/watch?v=_WdUkEriE20',
+          videoEmbedado: 'https://www.youtube.com/embed/_WdUkEriE20'
         },
       ],
     },
@@ -113,20 +113,20 @@ export default function Fitness() {
         'https://plus.unsplash.com/premium_photo-1661265933107-85a5dbd815af?auto=format&fit=crop&w=800&q=80',
       secoes: [
         {
-          title: 'Treino de braços',
-          time: '10 min',
+          title: 'Treino completo',
+          time: '20 min',
           thumbnail:
             'https://images.unsplash.com/photo-1570440828860-44258b18caa7?auto=format&fit=crop&q=80&w=800',
-          video: 'https://www.youtube.com/watch?v=EcQA_pba3R8',
-          videoEmbedado: 'https://www.youtube.com/embed/EcQA_pba3R8'
+          video: 'https://www.youtube.com/watch?v=XxVL-JlU18A',
+          videoEmbedado: 'https://www.youtube.com/embed/XxVL-JlU18A'
         },
         {
-          title: 'Pernas fortes',
+          title: 'Pernas e abdômen fortes',
           time: '12 min',
           thumbnail:
             'https://plus.unsplash.com/premium_photo-1664478159939-5242198cdcb5?auto=format&fit=crop&q=80&w=800',
-          video: 'https://www.youtube.com/watch?v=e7h7XpeDjDw',
-          videoEmbedado: 'https://www.youtube.com/embed/e7h7XpeDjDw'
+          video: 'https://www.youtube.com/watch?v=Mj4rkX3pwRY',
+          videoEmbedado: 'https://www.youtube.com/embed/Mj4rkX3pwRY'
         },
       ],
     },

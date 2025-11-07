@@ -10,20 +10,8 @@ import {
   View,
 } from 'react-native'
 import { styles } from '@/src/styles/lazer.styles'
+import { livros } from '@/src/data/livros'
 
-// imagens dos livros
-import imgAlice from '@/src/assets/images/entrenimento/capa-alice-no-pais-das-maravilhas.webp'
-import imgCupcake from '@/src/assets/images/entrenimento/capa-o-cupcake-da-discordia.jpg'
-import imgJardim from '@/src/assets/images/entrenimento/capa-o-jardim-secreto.jpg'
-import imgPequenoHeroi from '@/src/assets/images/entrenimento/capa-o-pequeno-heroi.jpg'
-import imgPequenoPrincipe from '@/src/assets/images/entrenimento/capa-o-pequeno-principe.jpg'
-
-// pdfs dos livros
-import pdfAlice from '@/src/assets/livros/alice-no-pais-das-maravilhas.pdf'
-import pdfCupcake from '@/src/assets/livros/o-cupcake-da-discordia.pdf'
-import pdfJardim from '@/src/assets/livros/o-jardim-secreto.pdf'
-import pdfPequenoHeroi from '@/src/assets/livros/o-pequeno-heroi.pdf'
-import pdfPequenoPrincipe from '@/src/assets/livros/o-pequeno-principe.pdf'
 
 export default function Lazer() {
   const [categoriaSelecionada, setCategoriaSelecionada] =
@@ -32,57 +20,10 @@ export default function Lazer() {
 
   const categorias = ['Todos os livros', 'Fantasia', 'Humor', 'Reflexão']
 
-  const entretenimentos = [
-    {
-      id: 1,
-      categoria: 'Fantasia',
-      titulo: 'Alice no País das Maravilhas - Lewis Carroll',
-      imagem: imgAlice,
-      pdf: pdfAlice,
-      descricao:
-        'Uma menina curiosa cai numa toca de coelho e descobre um mundo mágico cheio de personagens excêntricos e aventuras surreais.',
-    },
-    {
-      id: 2,
-      categoria: 'Humor',
-      titulo: 'O Cupcake da Discórdia - Stefania Gil',
-      imagem: imgCupcake,
-      pdf: pdfCupcake,
-      descricao:
-        'Romance leve e divertido sobre rivalidade, segredos e romance que nasce em torno de uma confeitaria especial.',
-    },
-    {
-      id: 3,
-      categoria: 'Fantasia',
-      titulo: 'O Jardim Secreto - Frances Hodgson Burnett',
-      imagem: imgJardim,
-      pdf: pdfJardim,
-      descricao:
-        'Uma menina solitária descobre um jardim abandonado e, ao restaurá-lo, transforma também sua própria vida e a dos que estão à sua volta.',
-    },
-    {
-      id: 4,
-      categoria: 'Reflexão',
-      titulo: 'O Pequeno Herói - Judith Steen',
-      imagem: imgPequenoHeroi,
-      pdf: pdfPequenoHeroi,
-      descricao:
-        'História inspiradora de coragem e superação de uma criança que, mesmo diante das dificuldades, encontra forças para ser um verdadeiro herói.',
-    },
-    {
-      id: 5,
-      categoria: 'Reflexão',
-      titulo: 'O Pequeno Príncipe - Antoine de Saint-Exupéry',
-      imagem: imgPequenoPrincipe,
-      pdf: pdfPequenoPrincipe,
-      descricao:
-        'Um piloto perdido no deserto encontra um menino vindo de outro planeta, e através de conversas simples, descobre reflexões profundas sobre amor, amizade e a essência da vida.',
-    },
-  ]
 
-  const entretenimentosFiltrados = useMemo(() => {
-    if (categoriaSelecionada === 'Todos os livros') return entretenimentos
-    return entretenimentos.filter(e => e.categoria === categoriaSelecionada)
+  const livrosFiltrados = useMemo(() => {
+    if (categoriaSelecionada === 'Todos os livros') return livros
+    return livros.filter(e => e.categoria === categoriaSelecionada)
   }, [categoriaSelecionada])
 
   async function openPdf(pdfAsset: any) {
@@ -145,7 +86,7 @@ export default function Lazer() {
           style={{ marginVertical: 35 }}
           contentContainerStyle={{ paddingHorizontal: 10 }}
         >
-          {entretenimentosFiltrados.map(livro => (
+          {livrosFiltrados.map(livro => (
             <TouchableOpacity
               key={livro.id}
               style={[

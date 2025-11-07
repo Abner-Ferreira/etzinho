@@ -1,4 +1,4 @@
-import background from '@/src/assets/images/background-inicial.png'
+import background from '@/src/assets/images/background-inicial-2.png'
 import logo from '@/src/assets/images/etzinho.png'
 import EtzinhoLoading from '@/src/components/spaceLoading'
 import { AuthContext } from '@/src/contexts/AuthContext'
@@ -12,16 +12,14 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native'
-
 
 export default function LoginScreen() {
   const { login, emailCadastrado, authLoading } = useContext(AuthContext)
   const router = useRouter()
 
-
-  const [email, setEmail] = useState( emailCadastrado || '')
+  const [email, setEmail] = useState(emailCadastrado || '')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 
@@ -55,10 +53,10 @@ export default function LoginScreen() {
         />
 
         <Text style={styles.label}>SENHA</Text>
-        
+
         <View style={{ position: 'relative', width: '100%' }}>
           <TextInput
-            style={[styles.input, { paddingRight: 40 }]} 
+            style={[styles.input, { paddingRight: 40 }]}
             placeholder='********'
             placeholderTextColor='#ddd'
             secureTextEntry={!showPassword}
@@ -78,9 +76,11 @@ export default function LoginScreen() {
         </View>
 
         <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-          {
-            authLoading ? <EtzinhoLoading /> : <Text style={styles.loginButtonText}>ENTRAR</Text>
-          }
+          {authLoading ? (
+            <EtzinhoLoading />
+          ) : (
+            <Text style={styles.loginButtonText}>ENTRAR</Text>
+          )}
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push('/(auth)/forgetPassword')}>

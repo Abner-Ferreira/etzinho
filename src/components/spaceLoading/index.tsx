@@ -1,6 +1,6 @@
 import { Platform } from 'react-native'
 
-let SpaceLoading
+var SpaceLoading: any
 
 if (Platform.OS === 'web') {
   SpaceLoading = require('./SpaceLoading.web').default
