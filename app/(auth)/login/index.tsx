@@ -9,6 +9,7 @@ import { useContext, useState } from 'react'
 import {
   Image,
   ImageBackground,
+  Platform,
   Text,
   TextInput,
   TouchableOpacity,
@@ -33,7 +34,11 @@ export default function LoginScreen() {
 
   return (
     <ImageBackground
-      source={{uri: '/background-inicial-2.png'}}
+      source={
+        Platform.OS === 'web'
+          ? { uri: '/background-inicial-2.png' }
+          : background
+      }
       style={styles.background}
       resizeMode='cover'
     >

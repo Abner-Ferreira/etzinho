@@ -1,8 +1,9 @@
-import { View, Text, Pressable, Alert, Animated } from 'react-native';
+import { View, Text, Pressable, Animated } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useState, useEffect, useRef } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ConfettiCannon from 'react-native-confetti-cannon';
+import Toast from '@/src/components/customToast'; // importe seu novo toast
 import { useSugestaoHora } from '@/src/hooks/useSugestaoDia';
 import { styles } from './estilizacao.styles';
 
@@ -11,13 +12,12 @@ export default function SugestaoDiariaCard() {
   const [checked, setChecked] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const scale = useRef(new Animated.Value(0)).current;
-
-  const [timeLeft, setTimeLeft] = useState<string>(''); 
+  const [timeLeft, setTimeLeft] = useState<string>('');
 
   useEffect(() => {
     const loadFeita = async () => {
       if (!sugestao) return;
-      const hora = new Date().toDateString() + "-" + new Date().getHours();
+      const hora = new Date().toDateString() + '-' + new Date().getHours();
       const data = await AsyncStorage.getItem('sugestoesFeitasHora');
       const feitas = data ? JSON.parse(data) : {};
       setChecked(feitas[hora]?.includes(sugestao.id) || false);
@@ -50,41 +50,49 @@ export default function SugestaoDiariaCard() {
     return () => clearInterval(interval);
   }, [sugestao]);
 
-  
   const toggleSugestao = async () => {
     if (!sugestao) return;
-    const hora = new Date().toDateString() + "-" + new Date().getHours();
+    const hora = new Date().toDateString() + '-' + new Date().getHours();
     const data = await AsyncStorage.getItem('sugestoesFeitasHora');
     const feitas = data ? JSON.parse(data) : {};
     if (!feitas[hora]) feitas[hora] = [];
 
+    // ✅ Quando marca como feita
     if (!checked) {
       feitas[hora].push(sugestao.id);
       await AsyncStorage.setItem('sugestoesFeitasHora', JSON.stringify(feitas));
       setChecked(true);
       setShowConfetti(true);
-      Alert.alert(
-        'Parabéns!',
-        'Você conseguiu! Volte na próxima hora para a nova sugestão.',
-        [{ text: 'OK' }]
-      );
-    } else {
-      Alert.alert(
-        'Cancelar progresso?',
-        'Deseja cancelar esta sugestão feita?',
-        [
-          { text: 'Não', style: 'cancel' },
-          {
-            text: 'Sim',
-            onPress: async () => {
-              feitas[hora] = feitas[hora].filter((id: number) => id !== sugestao.id);
-              await AsyncStorage.setItem('sugestoesFeitasHora', JSON.stringify(feitas));
-              setChecked(false);
-            },
-          },
-        ]
-      );
+
+      Toast.show({
+        type: 'success',
+        text1: 'Parabéns! 🎉',
+        text2: 'Você conseguiu! Volte na próxima hora para a nova sugestão.',
+      });
+      return;
     }
+
+    // ⚙️ Quando já está marcada e o usuário quer desmarcar
+   Toast.show({
+  type: 'info',
+  text1: 'Cancelar progresso?',
+  text2: 'Deseja cancelar esta sugestão feita?',
+  props: {
+    onPressYes: async () => {
+      feitas[hora] = feitas[hora].filter((id: number) => id !== sugestao.id);
+      await AsyncStorage.setItem('sugestoesFeitasHora', JSON.stringify(feitas));
+      setChecked(false);
+      Toast.hide();
+
+      Toast.show({
+        type: 'success',
+        text1: 'Sugestão desmarcada',
+        text2: 'Você pode refazer esta sugestão a qualquer momento.',
+      });
+    },
+    onPressNo: () => Toast.hide(),
+  },
+});
   };
 
   if (!sugestao) return null;
@@ -92,11 +100,12 @@ export default function SugestaoDiariaCard() {
   return (
     <View style={styles.containerCard}>
       <Text style={styles.textoSessao}>Sugestão diária</Text>
+
       <Pressable
         key={sugestao.id}
         onPress={toggleSugestao}
-        accessibilityRole='button'
-        accessibilityLabel={`Marcar sugestão diária como feita`}
+        accessibilityRole="button"
+        accessibilityLabel="Marcar sugestão diária como feita"
         style={({ pressed }) => [pressed && { transform: [{ scale: 0.995 }], opacity: 0.96 }]}
       >
         <View style={[styles.conteudoCardContainer, checked && styles.concluidoCardContainer]}>
@@ -107,13 +116,12 @@ export default function SugestaoDiariaCard() {
             <Text style={[styles.objetivoCard, checked && styles.concluidoObjetivoCard]}>
               {sugestao.subtitulo}
             </Text>
-            <Text style={styles.concluidoMensagem}>
-              Próxima sugestão em: {timeLeft}
-            </Text>
+            <Text style={styles.concluidoMensagem}>Próxima sugestão em: {timeLeft}</Text>
           </View>
+
           <Animated.View style={{ transform: [{ scale }] }}>
             <MaterialCommunityIcons
-              name='check-circle'
+              name="check-circle"
               size={32}
               color={checked ? '#1ab394' : '#1ab39447'}
             />
@@ -123,11 +131,11 @@ export default function SugestaoDiariaCard() {
 
       {showConfetti && (
         <ConfettiCannon
-          count={500}
+          count={400}
           origin={{ x: -40, y: 0 }}
           fadeOut
-          fallSpeed={5000}
-          explosionSpeed={150}
+          fallSpeed={4500}
+          explosionSpeed={140}
           autoStart
           onAnimationEnd={() => setShowConfetti(false)}
         />

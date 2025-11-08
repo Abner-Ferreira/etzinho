@@ -1,16 +1,15 @@
-import React, { createContext, useEffect, useState } from 'react'
-import { Alert } from 'react-native'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { auth, db } from '@/src/services/firebaseConfig'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { router } from 'expo-router'
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
-  signInWithEmailAndPassword,
   sendPasswordResetEmail,
+  signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth'
 import { get, ref, set } from 'firebase/database'
-import { router } from 'expo-router'
+import React, { createContext, useEffect, useState } from 'react'
 import Toast from 'react-native-toast-message'
 
 // Tempo limite da sessao (1 hora)
@@ -65,7 +64,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         if (elapsed > SESSION_DURATION) {
           // Sessao expirou
           await handleLogout()
-          Alert.alert('Sessão expirada', 'Por favor, faça login novamente.')
+          Toast.show({
+            type: 'info',
+            text1: 'Sessão expirada',
+            text2: 'Por favor, faça login novamente.',
+          })
           setLoading(false)
           return
         }
@@ -123,13 +126,21 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
         await AsyncStorage.setItem('loginTimestamp', Date.now().toString())
 
-        Alert.alert('Bem-vindo!', `Olá, ${snapshot.val().name}!`)
+        Toast.show({
+          type: 'success',
+          text1: 'Bem-vindo!',
+          text2: `Olá, ${snapshot.val().name}!`,
+        })
       }
     } catch (error: any) {
       const message =
         firebaseErrorMessages[error.code] ||
         'Erro ao fazer login. Verifique seus dados.'
-      Alert.alert('Erro no login', message)
+        Toast.show({
+          type: 'error',
+          text1: 'Erro no login',
+          text2: message,
+        })
       console.log('Erro Firebase login:', error.code)
     } finally {
       setAuthLoading(false)
@@ -180,25 +191,25 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setAuthLoading(true)
     try {
       await sendPasswordResetEmail(auth, email)
-      Alert.alert(
-        'Verifique seu e-mail',
-        'Se o e-mail estiver cadastrado, você receberá um link para redefinir sua senha.',
-        [
-          {
-            text: 'Ok',
-            onPress: () => {
-              router.push('/login')
-              setEmailCadastrado(email)
-            },
-          },
-        ]
-      )
+      Toast.show({
+        type: 'success',
+        text1: 'Verifique seu e-mail',
+        text2:
+          'Se o e-mail estiver cadastrado, você receberá um link para redefinir sua senha.',
+        onHide: () => {
+          router.push('/login')
+          setEmailCadastrado(email)
+        },
+      })
     } catch (error: any) {
       const errorMessage =
         firebaseErrorMessages[error.code] ||
         'Erro ao enviar o e-mail. Verifique seus dados.'
-      Alert.alert('Erro', errorMessage)
-      console.log('Erro Firebase forgetPassword:', error.code)
+      Toast.show({
+        type: 'error',
+        text1: 'Erro ao enviar e-mail',
+        text2: errorMessage,
+      })
     } finally {
       setAuthLoading(false)
     }

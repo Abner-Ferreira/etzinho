@@ -1,6 +1,8 @@
+import { livros } from '@/src/data/livros'
+import { styles } from '@/src/styles/lazer.styles'
 import { Asset } from 'expo-asset'
 import { LinearGradient } from 'expo-linear-gradient'
-import React, { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import {
   Image,
   Linking,
@@ -9,8 +11,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { styles } from '@/src/styles/lazer.styles'
-import { livros } from '@/src/data/livros'
+import Toast from 'react-native-toast-message'
 
 export default function Lazer() {
   const [categoriaSelecionada, setCategoriaSelecionada] =
@@ -32,14 +33,21 @@ export default function Lazer() {
       const localUri = asset.localUri || asset.uri
 
       if (!localUri) {
-        alert('Não foi possível localizar o arquivo PDF.')
+        Toast.show({
+          type: 'error',
+          text1: 'Erro',
+          text2: 'Não foi possível localizar o arquivo PDF.',
+        })
         return
       }
 
       await Linking.openURL(localUri)
     } catch (error) {
-      console.error('Erro ao abrir PDF:', error)
-      alert('Erro ao abrir o livro.')
+      Toast.show({
+          type: 'error',
+          text1: 'Erro',
+          text2: 'Erro ao abrir o livro.',
+        })
     }
   }
 

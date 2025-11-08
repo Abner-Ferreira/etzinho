@@ -7,7 +7,6 @@ import { MaterialIcons } from '@expo/vector-icons'
 import { router } from 'expo-router'
 import { useContext, useState } from 'react'
 import {
-  Alert,
   Image,
   ImageBackground,
   KeyboardAvoidingView,
@@ -16,8 +15,9 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native'
+import Toast from 'react-native-toast-message'
 
 export default function ForgetPassword() {
   const { forgetPassword, authLoading } = useContext(AuthContext)
@@ -29,20 +29,32 @@ export default function ForgetPassword() {
 
   async function handleResetPassword() {
     if (!email.trim()) {
-      Alert.alert('Atenção', 'Por favor, digite o seu e-mail.')
+      Toast.show({
+        type: 'error',
+        text1: 'Atenção',
+        text2: 'Por favor, digite o seu e-mail.',
+      })
       return
     }
 
     try {
       await forgetPassword(email)
     } catch (error: any) {
-      Alert.alert('Erro', error.message || 'Não foi possível enviar o e-mail.')
+       Toast.show({
+        type: 'error',
+        text1: 'Erro',
+        text2: error.message || 'Não foi possível enviar o e-mail.',
+      })
     }
   }
 
   return (
     <ImageBackground
-      source={{uri: '/background-inicial-2.png'}}
+       source={
+    Platform.OS === 'web'
+      ? { uri: '/background-inicial-2.png' } // usa o arquivo da pasta public na web
+      : background                           // usa o import no mobile
+  }
       style={styles.background}
       resizeMode='cover'
     >
