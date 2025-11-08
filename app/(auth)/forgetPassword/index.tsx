@@ -42,7 +42,7 @@ export default function ForgetPassword() {
 
   return (
     <ImageBackground
-      source={background}
+      source={{uri: '/background-inicial-2.png'}}
       style={styles.background}
       resizeMode='cover'
     >

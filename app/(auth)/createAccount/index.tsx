@@ -94,7 +94,7 @@ export default function CreateAccount() {
 
   return (
     <ImageBackground
-      source={background}
+      source={{uri: '/background-inicial-2.png'}}
       style={styles.background}
       resizeMode='cover'
     >
