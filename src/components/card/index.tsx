@@ -31,14 +31,14 @@ export default function Cards() {
       id: 2,
       title: 'Exercite-se em casa',
       color: '#EEE8FC',
-      route: 'meditacao/index',
+      route: 'fitness/index',
       icon: 'run',
     },
     {
       id: 3,
       title: 'Momento de lazer',
       color: '#CDEFF0',
-      route: 'entretenimento/index',
+      route: 'lazer/index',
       icon: 'book-open-page-variant',
     },
     {

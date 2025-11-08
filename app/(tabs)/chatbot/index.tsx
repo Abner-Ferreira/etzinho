@@ -60,7 +60,7 @@ export default function ChatScreen() {
   const [isTalking, setIsTalking] = useState(false)
 
   const WELCOME_MESSAGE =
-    'Olá, terráqueo! Eu sou o ETzinho, seu ET do autocuidado. Preparado para cuidar do corpo e da mente?'
+    'Oi, eu sou o Etzinho. 💚\nQue bom ter você aqui. Como você está?'
 
   useEffect(() => {
     setMessages([

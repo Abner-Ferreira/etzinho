@@ -1,5 +1,6 @@
 import background from '@/src/assets/images/background-inicial-2.png'
 import logo from '@/src/assets/images/etzinho.png'
+import SpaceLoading from '@/src/components/spaceLoading'
 import { AuthContext } from '@/src/contexts/AuthContext'
 import { styles } from '@/src/styles/createAccount.styles'
 import { MaterialIcons } from '@expo/vector-icons'
@@ -19,7 +20,7 @@ import {
 } from 'react-native'
 
 export default function ForgetPassword() {
-  const { forgetPassword } = useContext(AuthContext)
+  const { forgetPassword, authLoading } = useContext(AuthContext)
   const [email, setEmail] = useState('')
 
   function handleBack() {
@@ -40,11 +41,15 @@ export default function ForgetPassword() {
   }
 
   return (
-    <ImageBackground source={background} style={styles.background} resizeMode="cover">
+    <ImageBackground
+      source={background}
+      style={styles.background}
+      resizeMode='cover'
+    >
       <View style={styles.overlay} />
 
       <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-        <MaterialIcons name="arrow-back" size={28} color="#fff" />
+        <MaterialIcons name='arrow-back' size={28} color='#fff' />
       </TouchableOpacity>
 
       <KeyboardAvoidingView
@@ -53,26 +58,35 @@ export default function ForgetPassword() {
         keyboardVerticalOffset={Platform.OS === 'ios' ? 60 : 0}
       >
         <ScrollView
-          contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', padding: 20 }}
+          contentContainerStyle={{
+            flexGrow: 1,
+            justifyContent: 'center',
+            padding: 20,
+          }}
           showsVerticalScrollIndicator={false}
         >
           <View style={styles.container}>
-            <Image source={logo} style={styles.logo} resizeMode="contain" />
+            <Image source={logo} style={styles.logo} resizeMode='contain' />
 
-            <Text style={[styles.label, { textAlign: 'center', marginBottom: 10 }]}>
+            <Text
+              style={[styles.label, { textAlign: 'center', marginBottom: 10 }]}
+            >
               ESQUECEU SUA SENHA?
             </Text>
-            <Text style={{ color: '#fff', textAlign: 'center', marginBottom: 20 }}>
-              Digite o e-mail cadastrado. Enviaremos um link para redefinir sua senha.
+            <Text
+              style={{ color: '#fff', textAlign: 'center', marginBottom: 20 }}
+            >
+              Digite o e-mail cadastrado. Enviaremos um link para redefinir sua
+              senha.
             </Text>
 
             <Text style={styles.label}>E-MAIL</Text>
             <TextInput
               style={styles.input}
-              placeholder="next2025@fiap.com.br"
-              placeholderTextColor="#ddd"
-              keyboardType="email-address"
-              autoCapitalize="none"
+              placeholder='seu-email@gmail.com'
+              placeholderTextColor='#ddd'
+              keyboardType='email-address'
+              autoCapitalize='sentences'
               value={email}
               onChangeText={setEmail}
             />
@@ -81,7 +95,11 @@ export default function ForgetPassword() {
               style={[styles.loginButton, { marginTop: 30 }]}
               onPress={handleResetPassword}
             >
-              <Text style={styles.loginButtonText}>ENVIAR LINK</Text>
+              {authLoading ? (
+                <SpaceLoading />
+              ) : (
+                <Text style={styles.loginButtonText}>ENVIAR LINK</Text>
+              )}
             </TouchableOpacity>
           </View>
         </ScrollView>

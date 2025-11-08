@@ -10,6 +10,7 @@ import {
   signOut,
 } from 'firebase/auth'
 import { get, ref, set } from 'firebase/database'
+import { router } from 'expo-router'
 
 // Tempo limite da sessao (1 hora)
 const SESSION_DURATION = 60 * 60 * 1000
@@ -25,7 +26,11 @@ interface AuthContextType {
   loading: boolean
   authLoading: boolean
   login: (email: string, password: string) => Promise<void>
-  createAccount: (name: string, email: string, password: string) => Promise<void>
+  createAccount: (
+    name: string,
+    email: string,
+    password: string
+  ) => Promise<void>
   forgetPassword: (email: string) => Promise<void>
   logout: () => Promise<void>
   emailCadastrado: string
@@ -87,7 +92,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const firebaseErrorMessages: Record<string, string> = {
     'auth/invalid-email': 'O endereço de e-mail é inválido.',
     'auth/user-disabled': 'Esta conta foi desativada.',
-    'auth/user-not-found': 'Usuário não encontrado. Verifique o e-mail informado.',
+    'auth/user-not-found':
+      'Usuário não encontrado. Verifique o e-mail informado.',
     'auth/wrong-password': 'Senha incorreta. Tente novamente.',
     'auth/email-already-in-use': 'Este e-mail já está em uso por outra conta.',
     'auth/too-many-requests': 'Muitas tentativas. Tente novamente mais tarde.',
@@ -99,7 +105,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   async function login(email: string, password: string) {
     setAuthLoading(true)
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password)
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      )
       const firebaseUser = userCredential.user
       const snapshot = await get(ref(db, `users/${firebaseUser.uid}`))
 
@@ -109,7 +119,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           nome: snapshot.val().name,
           email: snapshot.val().email,
         })
-        
+
         await AsyncStorage.setItem('loginTimestamp', Date.now().toString())
 
         Alert.alert('Bem-vindo!', `Olá, ${snapshot.val().name}!`)
@@ -129,13 +139,26 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   async function createAccount(name: string, email: string, password: string) {
     setAuthLoading(true)
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-      const user = userCredential.user
-      await set(ref(db, 'users/' + user.uid), { name, email })
-      Alert.alert('Sucesso', 'Conta criada com sucesso!')
+      await createUserWithEmailAndPassword(auth, email, password)
+        .then(async userCredential => {
+          const user = userCredential.user
+          await set(ref(db, 'users/' + user.uid), { name, email }).then(() => {
+            Alert.alert('Sucesso', 'Conta criada com sucesso!')
+            setEmailCadastrado(email)
+            router.push('/login')
+          })
+        })
+        .catch((error: any) => {
+          const message =
+            firebaseErrorMessages[error.code] ||
+            'Erro ao criar conta. Tente novamente.'
+          Alert.alert('Erro no cadastro', message)
+          console.log('Erro Firebase cadastro:', error.code)
+        })
     } catch (error: any) {
       const message =
-        firebaseErrorMessages[error.code] || 'Erro ao criar conta. Tente novamente.'
+        firebaseErrorMessages[error.code] ||
+        'Erro ao criar conta. Tente novamente.'
       Alert.alert('Erro no cadastro', message)
       console.log('Erro Firebase cadastro:', error.code)
     } finally {
@@ -150,12 +173,21 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       await sendPasswordResetEmail(auth, email)
       Alert.alert(
         'Verifique seu e-mail',
-        'Se o e-mail estiver cadastrado, você receberá um link para redefinir sua senha.'
+        'Se o e-mail estiver cadastrado, você receberá um link para redefinir sua senha.',
+        [
+          {
+            text: 'Ok',
+            onPress: () => {
+              router.push('/login')
+              setEmailCadastrado(email)
+            },
+          },
+        ]
       )
-      setEmailCadastrado(email)
     } catch (error: any) {
       const errorMessage =
-        firebaseErrorMessages[error.code] || 'Erro ao enviar o e-mail. Verifique seus dados.'
+        firebaseErrorMessages[error.code] ||
+        'Erro ao enviar o e-mail. Verifique seus dados.'
       Alert.alert('Erro', errorMessage)
       console.log('Erro Firebase forgetPassword:', error.code)
     } finally {

@@ -44,10 +44,10 @@ export default function LoginScreen() {
         <Text style={styles.label}>E-MAIL</Text>
         <TextInput
           style={styles.input}
-          placeholder='next2025@fiap.com.br'
+          placeholder='seu-email@gmail.com'
           placeholderTextColor='#ddd'
           keyboardType='email-address'
-          autoCapitalize='none'
+          autoCapitalize='sentences'
           value={email}
           onChangeText={setEmail}
         />
@@ -61,6 +61,7 @@ export default function LoginScreen() {
             placeholderTextColor='#ddd'
             secureTextEntry={!showPassword}
             value={password}
+            autoCapitalize='sentences'
             onChangeText={setPassword}
           />
           <TouchableOpacity

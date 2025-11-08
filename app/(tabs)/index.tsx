@@ -11,6 +11,7 @@ export default function Home() {
   const { user } = useContext(AuthContext)
 
   const [fraseMotivacional, setFraseMotivacional] = useState('')
+  const [cumprimentos, setCumprimentos] = useState('')
 
   const fadeAnim = useRef(new Animated.Value(0)).current
 
@@ -24,17 +25,20 @@ export default function Home() {
     const agora = new Date()
     const hora = agora.getHours()
 
-    if (hora >= 5 && hora < 12) {
+    if (hora >= 5 && hora < 12 ) {
+      setCumprimentos(`Bom dia, ${user?.nome ? user?.nome?.split(' ')[0] : user?.email} ☀️`)
       setFraseMotivacional(
-        'Bom dia, terráqueo radiante! 🌞 O universo sorri pra você hoje!'
+        'Respira fundo, o dia está só começando.'
       )
     } else if (hora >= 12 && hora < 18) {
+      setCumprimentos(`Olá, ${user?.nome ? user?.nome?.split(' ')[0] : user?.email} ✨`)
       setFraseMotivacional(
-        'Boa tarde, terráqueo! 🚀 Continue brilhando por aí!'
+        'Que tal uma pequena pausa para recarregar?'
       )
     } else {
+      setCumprimentos(`Boa noite, ${user?.nome ? user?.nome?.split(' ')[0] : user?.email} 🌙`)
       setFraseMotivacional(
-        'Boa noite, terráqueo! 🌙 Você fez o seu melhor hoje!'
+        'O dia já foi. Agora desacelera um pouco.'
       )
     }
   }, [])
@@ -47,7 +51,7 @@ export default function Home() {
         nestedScrollEnabled
       >
         <Text style={styles.titulo}>
-          Olá, {user?.nome ? user?.nome?.split(' ')[0] : user?.email}!
+          {cumprimentos}
         </Text>
 
         <Animated.Text

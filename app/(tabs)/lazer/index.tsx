@@ -12,14 +12,12 @@ import {
 import { styles } from '@/src/styles/lazer.styles'
 import { livros } from '@/src/data/livros'
 
-
 export default function Lazer() {
   const [categoriaSelecionada, setCategoriaSelecionada] =
     useState('Todos os livros')
   const [livroSelecionado, setLivroSelecionado] = useState<any>(null)
 
   const categorias = ['Todos os livros', 'Fantasia', 'Humor', 'Reflexão']
-
 
   const livrosFiltrados = useMemo(() => {
     if (categoriaSelecionada === 'Todos os livros') return livros
@@ -125,9 +123,11 @@ export default function Lazer() {
             </>
           ) : (
             <>
-              <Text style={styles.subtitulo}>Nenhum livro selecionado</Text>
+              <Text style={styles.subtitulo}>
+                Nenhum livro por aqui ainda 🌱
+              </Text>
               <Text style={styles.tituloPrincipal}>
-                Explore nossas categorias e escolha um livro para ver a sinopse!
+                Explore e encontre o que mais combina com você hoje!
               </Text>
               <Text style={styles.textoExtra}>
                 Você pode filtrar os livros acima por categoria e navegar pelas

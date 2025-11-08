@@ -63,7 +63,6 @@ export default function CreateAccount() {
 
     try {
       await createAccount(name, email, password)
-      Alert.alert('Conta criada!', `Bem-vindo ${email}`)
     } catch (error: any) {
       Alert.alert('Erro ao criar conta', error.message)
     }
@@ -123,7 +122,7 @@ export default function CreateAccount() {
               placeholder='Etzinho da Silva'
               placeholderTextColor='#ddd'
               keyboardType='default'
-              autoCapitalize='none'
+              autoCapitalize='sentences'
               value={name}
               onChangeText={setName}
             />
@@ -131,10 +130,10 @@ export default function CreateAccount() {
             <Text style={styles.label}>E-MAIL</Text>
             <TextInput
               style={styles.input}
-              placeholder='next2025@fiap.com.br'
+              placeholder='seu-email@gmail.com'
               placeholderTextColor='#ddd'
               keyboardType='email-address'
-              autoCapitalize='none'
+              autoCapitalize='sentences'
               value={email}
               onChangeText={setEmail}
             />
@@ -147,6 +146,7 @@ export default function CreateAccount() {
                 placeholderTextColor='#ddd'
                 secureTextEntry={!showPassword}
                 value={password}
+                autoCapitalize='sentences'
                 onChangeText={validatePassword}
               />
               <TouchableOpacity
@@ -170,6 +170,7 @@ export default function CreateAccount() {
                 placeholderTextColor='#ddd'
                 secureTextEntry={!showPasswordConfirmation}
                 value={passwordConfirmation}
+                autoCapitalize='sentences'
                 onChangeText={validateConfirmation}
               />
               <TouchableOpacity
