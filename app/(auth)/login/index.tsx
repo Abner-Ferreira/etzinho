@@ -33,7 +33,7 @@ export default function LoginScreen() {
 
   return (
     <ImageBackground
-      source={background}
+      source={{uri: '/background-inicial-2.png'}}
       style={styles.background}
       resizeMode='cover'
     >
