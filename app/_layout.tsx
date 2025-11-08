@@ -4,6 +4,7 @@ import React, { useContext, useEffect } from 'react'
 import Splash from '@/src/components/splash'
 import { StatusBar, Platform } from 'react-native'
 import { useFonts, Inter_700Bold, Inter_400Regular, Inter_600SemiBold } from '@expo-google-fonts/inter'
+import Toast from 'react-native-toast-message'
 
 function RootNavigator() {
   const { user, loading } = useContext(AuthContext)
@@ -45,6 +46,7 @@ export default function RootLayout() {
     <AuthProvider>
       <StatusBar barStyle="dark-content" />
       <RootNavigator />
+      <Toast />
     </AuthProvider>
   )
 }

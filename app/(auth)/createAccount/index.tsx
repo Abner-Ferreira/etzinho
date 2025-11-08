@@ -7,7 +7,6 @@ import { MaterialIcons } from '@expo/vector-icons'
 import { router } from 'expo-router'
 import { useContext, useState } from 'react'
 import {
-  Alert,
   Image,
   ImageBackground,
   KeyboardAvoidingView,
@@ -18,6 +17,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
+import Toast from 'react-native-toast-message'
 
 export default function CreateAccount() {
   const { createAccount, authLoading } = useContext(AuthContext)
@@ -28,7 +28,8 @@ export default function CreateAccount() {
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
   const [showPassword, setShowPassword] = useState(false)
-  const [showPasswordConfirmation, setShowPasswordConfirmation] = useState(false)
+  const [showPasswordConfirmation, setShowPasswordConfirmation] =
+    useState(false)
 
   const [isPasswordValid, setIsPasswordValid] = useState(false)
   const [isConfirmationValid, setIsConfirmationValid] = useState(false)
@@ -49,22 +50,32 @@ export default function CreateAccount() {
 
   async function handleCreateAccount() {
     if (!isPasswordValid) {
-      Alert.alert(
-        'Senha inválida',
-        'A senha deve conter no mínimo 8 caracteres, 1 letra maiúscula, 1 letra minúscula, 1 número e 1 símbolo especial.'
-      )
+      Toast.show({
+        type: 'error',
+        text1: 'Senha inválida',
+        text2:
+          'A senha deve conter 8 caracteres, 1 maiúscula, 1 minúscula, 1 número e 1 símbolo especial.',
+      })
       return
     }
 
     if (!isConfirmationValid) {
-      Alert.alert('Erro', 'As senhas não coincidem!')
+      Toast.show({
+        type: 'error',
+        text1: 'Erro',
+        text2: 'As senhas não coincidem!',
+      })
       return
     }
 
     try {
       await createAccount(name, email, password)
     } catch (error: any) {
-      Alert.alert('Erro ao criar conta', error.message)
+      Toast.show({
+        type: 'error',
+        text1: 'Erro ao criar conta',
+        text2: error.message || 'Tente novamente mais tarde.',
+      })
     }
   }
 
@@ -94,7 +105,11 @@ export default function CreateAccount() {
 
   return (
     <ImageBackground
-      source={{uri: '/background-inicial-2.png'}}
+      source={
+        Platform.OS === 'web'
+          ? { uri: '/background-inicial-2.png' }
+          : background
+      }
       style={styles.background}
       resizeMode='cover'
     >
@@ -110,7 +125,11 @@ export default function CreateAccount() {
         keyboardVerticalOffset={Platform.OS === 'ios' ? 60 : 0}
       >
         <ScrollView
-          contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', padding: 20 }}
+          contentContainerStyle={{
+            flexGrow: 1,
+            justifyContent: 'center',
+            padding: 20,
+          }}
           showsVerticalScrollIndicator={false}
         >
           <View style={styles.container}>
@@ -133,7 +152,7 @@ export default function CreateAccount() {
               placeholder='seu-email@gmail.com'
               placeholderTextColor='#ddd'
               keyboardType='email-address'
-              autoCapitalize='sentences'
+              autoCapitalize='none'
               value={email}
               onChangeText={setEmail}
             />
@@ -146,7 +165,7 @@ export default function CreateAccount() {
                 placeholderTextColor='#ddd'
                 secureTextEntry={!showPassword}
                 value={password}
-                autoCapitalize='sentences'
+                autoCapitalize='none'
                 onChangeText={validatePassword}
               />
               <TouchableOpacity
@@ -170,30 +189,37 @@ export default function CreateAccount() {
                 placeholderTextColor='#ddd'
                 secureTextEntry={!showPasswordConfirmation}
                 value={passwordConfirmation}
-                autoCapitalize='sentences'
+                autoCapitalize='none'
                 onChangeText={validateConfirmation}
               />
               <TouchableOpacity
                 style={{ position: 'absolute', right: 10, top: 12 }}
-                onPress={() => setShowPasswordConfirmation(!showPasswordConfirmation)}
+                onPress={() =>
+                  setShowPasswordConfirmation(!showPasswordConfirmation)
+                }
               >
                 <MaterialIcons
-                  name={showPasswordConfirmation ? 'visibility' : 'visibility-off'}
+                  name={
+                    showPasswordConfirmation ? 'visibility' : 'visibility-off'
+                  }
                   size={24}
                   color='#fff'
                 />
               </TouchableOpacity>
             </View>
-            {passwordConfirmation.length > 0 && renderPasswordValidation(passwordConfirmation)}
+            {passwordConfirmation.length > 0 &&
+              renderPasswordValidation(passwordConfirmation)}
 
             <TouchableOpacity
               style={[styles.loginButton, !isPasswordValid && { opacity: 0.5 }]}
               disabled={!isPasswordValid}
               onPress={handleCreateAccount}
             >
-              {
-                authLoading ? <SpaceLoading /> : <Text style={styles.loginButtonText}>CRIAR CONTA</Text>
-              }
+              {authLoading ? (
+                <SpaceLoading />
+              ) : (
+                <Text style={styles.loginButtonText}>CRIAR CONTA</Text>
+              )}
             </TouchableOpacity>
           </View>
         </ScrollView>

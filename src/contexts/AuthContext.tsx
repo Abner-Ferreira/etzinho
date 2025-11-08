@@ -11,6 +11,7 @@ import {
 } from 'firebase/auth'
 import { get, ref, set } from 'firebase/database'
 import { router } from 'expo-router'
+import Toast from 'react-native-toast-message'
 
 // Tempo limite da sessao (1 hora)
 const SESSION_DURATION = 60 * 60 * 1000
@@ -143,24 +144,32 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         .then(async userCredential => {
           const user = userCredential.user
           await set(ref(db, 'users/' + user.uid), { name, email }).then(() => {
-            Alert.alert('Sucesso', 'Conta criada com sucesso!')
-            setEmailCadastrado(email)
-            router.push('/login')
+            Toast.show({
+              type: 'success',
+              text1: 'Sucesso',
+              text2: 'Conta criada com sucesso!',
+            })
           })
         })
         .catch((error: any) => {
           const message =
             firebaseErrorMessages[error.code] ||
             'Erro ao criar conta. Tente novamente.'
-          Alert.alert('Erro no cadastro', message)
-          console.log('Erro Firebase cadastro:', error.code)
+          Toast.show({
+            type: 'error',
+            text1: 'Erro no cadastro',
+            text2: message,
+          })
         })
     } catch (error: any) {
       const message =
         firebaseErrorMessages[error.code] ||
         'Erro ao criar conta. Tente novamente.'
-      Alert.alert('Erro no cadastro', message)
-      console.log('Erro Firebase cadastro:', error.code)
+      Toast.show({
+        type: 'error',
+        text1: 'Erro no cadastro',
+        text2: message,
+      })
     } finally {
       setAuthLoading(false)
     }
